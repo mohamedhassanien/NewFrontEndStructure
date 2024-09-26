@@ -1,0 +1,64 @@
+@import  '../../../../default.scss';
+
+section{
+    background: linear-gradient(to right,$left-color,$right-color);
+
+    .row{
+        .login-card{
+            .card-left-content{
+                color: #9A9A9A;
+                
+                form{
+                    .input-caption{
+                        border: 1px solid $border-color;
+                        box-shadow: $border-shadow;
+                        width:100% !important;
+                        input::placeholder{
+                            color: #9A9A9A;
+                        }
+
+                        label{
+                            top:-15px;
+                            left: 30px;
+                            color: $State-Color-1;
+                            background-color: white;
+                            font-weight:600;
+                            
+                        }
+                       
+                    }
+                    .remember-me{
+                        label{
+                         color: #7A86A1;
+                        }
+                        input{
+                        border: 1px solid #C0BDCC !important;
+                        }
+                     }
+                    .forgot-pass{
+                        color: $State-Color-1;
+                        text-decoration:none ;
+                        font-weight: 600;
+                    }
+                    .login-btn{
+                        width:98%;
+                        button{
+                            background-color: $button-color;
+                        }
+                    }
+                }
+                .sign-up{
+                    color: $State-Color-1;
+                    font-weight: 600;
+                    text-decoration: none;
+                }
+                .br-line-caption{
+                    p{
+                        top:-14px;
+                        left:35%;
+                    }
+                }
+            }
+        }
+    }
+}
