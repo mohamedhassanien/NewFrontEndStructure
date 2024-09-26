@@ -1,4 +1,5 @@
-@import './default.scss';
+@use './default';
+
 
 body{
     background-color: $bg-color;
