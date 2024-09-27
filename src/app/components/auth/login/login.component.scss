@@ -2,19 +2,36 @@
 
 section{
     background: linear-gradient(to right,$left-color,$right-color);
+    box-sizing: border-box;
 
-    .row{
+    
         .login-card{
             .card-left-content{
                 color: #9A9A9A;
+                
                 
                 form{
                     .input-caption{
                         border: 1px solid $border-color;
                         box-shadow: $border-shadow;
                         width:100% !important;
+                        input{
+                            box-sizing: border-box;
+                        }
                         input::placeholder{
                             color: #9A9A9A;
+                        }
+                        input:focus{
+                            outline: none;
+                        }
+                        input:hover{
+                            background-color: white;
+                        }
+                        input:-webkit-autofill,
+                        input:-webkit-autofill:hover,
+                        input:-webkit-autofill:focus,
+                        input:-webkit-autofill:active {
+                            transition: background-color 5000s ease-in-out 0s;
                         }
 
                         label{
@@ -60,5 +77,21 @@ section{
                 }
             }
         }
+    
+}
+
+@media only screen and (max-width:768px) {
+    section{
+        .login-card{
+            width:100% !important;
+            .card-left-content{
+                width: 100% ;
+                padding-right: 0;
+            }
+            .card-right{
+                display: none !important; 
+            }
+        }
     }
+
 }
