@@ -71,8 +71,8 @@ section{
 }
 
 @media only screen and (max-width:830px) {
-    section{
-        .login-card{
+    .signup-section{
+        .signup-card{
             width:100% !important;
             .card-left-content{
                 width: 100% ;
@@ -87,7 +87,7 @@ section{
 }
 @media only screen and (max-width: 1199.9px) and (min-width: 831px){
     section{
-        .login-card{
+        .signup-card{
             width: 80% !important;
         }
     }
