@@ -4,6 +4,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { StatisticsComponent } from './components/pages/statistics/statistics.component';
 import { ProspectComponent } from './components/pages/prospect/prospect.component';
 import { authGuard } from './guard/auth.guard';
+import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
 
 export const routes: Routes = [
     {
@@ -14,6 +15,10 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path:'reset-password',
+        component:ResetPasswordComponent
     },
     {
         path: '',
