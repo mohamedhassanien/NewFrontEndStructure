@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-verfiy',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './verfiy.component.html',
   styleUrl: './verfiy.component.scss'
 })
