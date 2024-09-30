@@ -81,7 +81,7 @@ section{
     
 }
 
-@media only screen and (max-width:820px) {
+@media only screen and (max-width:830px) {
     section{
         .login-card{
             width:100% !important;
@@ -96,3 +96,10 @@ section{
     }
 
 }
+@media only screen and (max-width: 1199.9px) and (min-width: 831px){
+    section{
+        .login-card{
+            width: 80% !important;
+        }
+    }
+} 
