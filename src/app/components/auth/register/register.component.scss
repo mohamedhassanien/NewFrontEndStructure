@@ -50,7 +50,10 @@ section{
                         width:98%;
                         button{
                             background-color: $button-color;
+                            box-shadow: $button-shadow;
+                            
                         }
+                        
                     }
                 }
                 .sign-up{
