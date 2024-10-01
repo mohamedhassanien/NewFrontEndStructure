@@ -1,0 +1,16 @@
+@import '../authStyle.scss';
+
+
+.card-left-con{
+    .code-card{
+        width: 61.5px;
+        height: 59px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 4px 6px 15px 0px #0000000F;
+        font-size: 32px;
+        font-weight: 500;
+        color: #808080 !important;
+    }
+}
