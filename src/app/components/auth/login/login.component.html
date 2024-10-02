@@ -11,14 +11,14 @@
               <div class="row card-content d-flex justify-content-between w-100">
                 <div class="col-6 card-left-content">
                    <div class="card-left-con pt-4">
-                    <form>
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)" >
                       <div class="input-caption position-relative mb-5 p-3 rounded-5">
                         <label for="email" class="position-absolute px-2">Your email</label>
-                        <input type="email" class="border-0 w-100 bg-white ps-2" >
+                        <input type="email" class="border-0 w-100 bg-white ps-2" formControlName="email">
                       </div>
                       <div class="input-caption position-relative p-3 rounded-5 mb-4">
                         <label for="password" class="position-absolute px-2">Password</label>
-                        <input type="{{ showPassword ? 'text' :'password' }}" id="password" class="border-0 w-100 bg-white ps-2">
+                        <input type="{{ showPassword ? 'text' :'password' }}" id="password" class="border-0 w-100 bg-white ps-2" formControlName="password">
                         <!-- <mat-icon fontSet="material-icons-outlined" (click)="togglePassswordVisiblity()">{{ showPassword ? "visibility_off" : "visibility_outlined"}}</mat-icon> -->
                         <i class="toggle-password-icon" [ngClass]="{'fa fa-eye' : !showPassword ,'fa fa-eye-slash' : showPassword}" (click)="togglePassswordVisiblity()"></i>
                       </div>
