@@ -3,15 +3,19 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Login } from '../../../models/login.model';
 import { LoginService } from '../../../services/auth/login.service';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  showPassword:boolean = false ;
 
    loginObj:Login = {
      email: '',
@@ -27,4 +31,7 @@ export class LoginComponent {
     })
    }
 
+   togglePassswordVisiblity():void{
+    this.showPassword = !this.showPassword;
+   }
 }
