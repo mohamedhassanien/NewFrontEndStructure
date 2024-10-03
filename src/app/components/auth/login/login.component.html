@@ -20,7 +20,7 @@
                         <label for="password" class="position-absolute px-2">Password</label>
                         <input type="{{ showPassword ? 'text' :'password' }}" id="password" class="border-0 w-100 bg-white ps-2" formControlName="password">
                         <!-- <mat-icon fontSet="material-icons-outlined" (click)="togglePassswordVisiblity()">{{ showPassword ? "visibility_off" : "visibility_outlined"}}</mat-icon> -->
-                        <i class="toggle-password-icon" [ngClass]="{'fa fa-eye' : !showPassword ,'fa fa-eye-slash' : showPassword}" (click)="togglePassswordVisiblity()"></i>
+                        <i class="toggle-password-icon" [class]="showPassword ? 'fa fa-eye-slash': 'fa fa-eye'" (click)="togglePassswordVisiblity()"></i>
                       </div>
                     <div class="d-flex justify-content-between mb-4">
                         <div class="remember-me">
