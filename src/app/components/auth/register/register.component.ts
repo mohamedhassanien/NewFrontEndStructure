@@ -37,7 +37,8 @@ ngOnInit(): void {
     email:new FormControl('',[Validators.required,Validators.email]),
     country:new FormControl('',[Validators.required]),
     age:new FormControl('',[Validators.required]),
-    password:new FormControl('',[Validators.pattern('[a-zA-Z0-9]{8,16}')])
+    password:new FormControl('',[Validators.pattern('[a-zA-Z0-9]{8,16}')]),
+    repassword:new FormControl('',Validators.required)
   })
 }
 

@@ -11,58 +11,58 @@
                             <h3>Sign Up</h3>
                         </div>
                     <div class="card-left-con pt-4">
-                        <form>
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="input-caption position-relative mb-4 p-3 rounded-5">
                                         <label for="fname" class="position-absolute px-2">First Name</label>
-                                        <input type="text" class="border-0 w-100 bg-white ps-2" >
+                                        <input type="text" class="border-0 w-100 bg-white ps-2" formControlName="firstName">
                                       </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="input-caption position-relative mb-4 p-3 rounded-5">
                                         <label for="lname" class="position-absolute px-2">Last Name</label>
-                                        <input type="text" class="border-0 w-100 bg-white ps-2" >
+                                        <input type="text" class="border-0 w-100 bg-white ps-2" formControlName="lastName" >
                                       </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="input-caption position-relative mb-4 p-3 rounded-5">
                                         <label for="phone" class="position-absolute px-2">Mobile Number</label>
-                                        <input type="tel" class="border-0 w-100 bg-white ps-2" >
+                                        <input type="tel" class="border-0 w-100 bg-white ps-2" formControlName="phoneNumber" >
                                       
                                       </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="input-caption position-relative mb-4 p-3 rounded-5">
                                         <label for="email" class="position-absolute px-2">Email address</label>
-                                        <input type="email" class="border-0 w-100 bg-white ps-2" >
+                                        <input type="email" class="border-0 w-100 bg-white ps-2" formControlName="email">
                                       </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="input-caption position-relative mb-4 p-3 rounded-5">
                                         <label for="age" class="position-absolute px-2">Country</label>
-                                        <input type="text" class="border-0 w-100 bg-white ps-2" >
+                                        <input type="text" class="border-0 w-100 bg-white ps-2" formControlName="country" >
                                       </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="input-caption position-relative mb-4 p-3 rounded-5">
                                         <label for="age" class="position-absolute px-2">Your age</label>
-                                        <input type="text" class="border-0 w-100 bg-white ps-2" >
+                                        <input type="text" class="border-0 w-100 bg-white ps-2" formControlName="age">
                                       </div>
                                 </div>
                                 
                                 <div class="col-6">
                                     <div class="input-caption position-relative p-3 rounded-5 mb-4">
                                         <label for="password" class="position-absolute px-2">Password</label>
-                                        <input [type]="showPassword ? 'text' : 'password'" id="password" class="border-0 w-100 bg-white ps-2">
+                                        <input [type]="showPassword ? 'text' : 'password'" id="password" class="border-0 w-100 bg-white ps-2" formControlName="password">
                                         <i class="toggle-password-icon" [class]="showPassword ? 'fa fa-eye-slash': 'fa fa-eye'" (click)="togglePasswordVisiblity()"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="input-caption position-relative p-3 rounded-5 mb-4">
                                         <label for="rePassword" class="position-absolute px-2">Confirm Password</label>
-                                        <input [type]="showRepass ? 'text' : 'password' " id="rePassword" class="border-0 w-100 bg-white ps-2">
+                                        <input [type]="showRepass ? 'text' : 'password' " id="rePassword" class="border-0 w-100 bg-white ps-2" formControlName="repassword">
                                         <i class="toggle-password-icon" [class]="showRepass ? 'fa fa-eye-slash': 'fa fa-eye'" (click)="toggleRepassVisiblity()"></i>
 
                                       </div>
