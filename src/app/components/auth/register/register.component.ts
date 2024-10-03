@@ -17,6 +17,7 @@ import { Register } from '../../../models/register.model';
 })
 export class RegisterComponent implements OnInit {
 showPassword:boolean = false;
+showRepass:boolean = false;
 registerForm!:FormGroup;
 registerObj:Register ={
   firstName:'',
@@ -43,6 +44,10 @@ ngOnInit(): void {
 togglePasswordVisiblity():void{
   this.showPassword = !this.showPassword;
 }
+toggleRepassVisiblity():void{
+  this.showRepass = !this.showRepass
+}
+
 onSubmit(registerForm:FormGroup){
   this.registerObj = registerForm.value;
   console.log(this.registerObj)
