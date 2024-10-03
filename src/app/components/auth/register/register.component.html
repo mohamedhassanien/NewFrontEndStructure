@@ -55,13 +55,16 @@
                                 <div class="col-6">
                                     <div class="input-caption position-relative p-3 rounded-5 mb-4">
                                         <label for="password" class="position-absolute px-2">Password</label>
-                                        <input type="password" class="border-0 w-100 bg-white ps-2">
+                                        <input [type]="showPassword ? 'text' : 'password'" id="password" class="border-0 w-100 bg-white ps-2">
+                                        <i class="toggle-password-icon" [class]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'" (click)="togglePasswordVisiblity()"></i>
                                       </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="input-caption position-relative p-3 rounded-5 mb-4">
-                                        <label for="password" class="position-absolute px-2">Confirm Password</label>
-                                        <input type="password" class="border-0 w-100 bg-white ps-2">
+                                        <label for="rePassword" class="position-absolute px-2">Confirm Password</label>
+                                        <input [type]="showPassword ? 'text' : 'password'" id="rePassword" class="border-0 w-100 bg-white ps-2">
+                                        <i class="toggle-password-icon" [class]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'" (click)="togglePasswordVisiblity()"></i>
+
                                       </div>
                                 </div>
                             </div>
