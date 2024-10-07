@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { RouterModule } from '@angular/router';
 import { Register } from '../../../models/register.model';
 import { RegisterService } from '../../../services/auth/register.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,8 @@ import { RegisterService } from '../../../services/auth/register.service';
   imports: [
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   
   templateUrl: './register.component.html',
