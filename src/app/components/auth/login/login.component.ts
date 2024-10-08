@@ -2,20 +2,22 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Login } from '../../../models/login.model';
-import { LoginService } from '../../../services/auth/login.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { AnimationOptions } from 'ngx-lottie';
+import { AuthService } from '../../../services/auth/auth.service';
+import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule],
+  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule,LottieComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  
 })
 export class LoginComponent implements OnInit{
+  
   showPassword:boolean = false ;
   loginForm!:FormGroup;
 
@@ -36,11 +38,11 @@ export class LoginComponent implements OnInit{
 
    }
 
-   loginServ = inject(LoginService)
+   auth = inject(AuthService)
 
    login(){
     console.log(this.loginObj)
-    this.loginServ.login(this.loginObj.email, this.loginObj.password).subscribe((res:any)=>{
+    this.auth.login(this.loginObj.email, this.loginObj.password).subscribe((res:any)=>{
     
     })
    }
