@@ -5,17 +5,19 @@ import { Login } from '../../../models/login.model';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../../../services/auth/auth.service';
-import { AnimationOptions } from 'ngx-lottie';
+import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule],
+  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule,LottieComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  
 })
 export class LoginComponent implements OnInit{
+  
   showPassword:boolean = false ;
   loginForm!:FormGroup;
 
