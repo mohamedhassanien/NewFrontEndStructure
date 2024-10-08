@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {  Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Login } from '../../../models/login.model';
@@ -17,6 +17,7 @@ import { AuthService } from '../../../services/auth/auth.service';
   
 })
 export class LoginComponent implements OnInit{
+  constructor(){}
   
   showPassword:boolean = false ;
   loginForm!:FormGroup;

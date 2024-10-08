@@ -1,0 +1,24 @@
+@import '../../../../default.scss';
+.wrapper{
+    width:325px;
+    height: 100vh;
+    position: fixed;
+    background-color: #FAFBFF;
+    #sidebar{
+        .sidebar-nav{
+            .sidebar-item:hover{
+                  background-color: white;   
+            }
+            
+        }
+    }
+}
+
+
+.active{
+    background-color: $button-color;
+    box-shadow: $button-shadow;
+    color: white !important;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+}

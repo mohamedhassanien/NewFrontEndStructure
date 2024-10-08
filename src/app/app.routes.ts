@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from './components/auth/reset-password/reset-p
 import { RegisterComponent } from './components/auth/register/register.component';
 import { VerfiyComponent } from './components/auth/verfiy/verfiy.component';
 import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 
 export const routes: Routes = [
     {
@@ -36,7 +37,7 @@ export const routes: Routes = [
         component:ForgotPasswordComponent
     },
     {
-        path: '',
+        path: 'layout',
         component: LayoutComponent,
         children: [
             {
