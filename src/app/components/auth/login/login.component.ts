@@ -4,13 +4,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Login } from '../../../models/login.model';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-<<<<<<< HEAD
-import { AnimationOptions, LottieComponent } from 'ngx-lottie';
-import { AuthService } from '../../../services/auth/auth.service';
-=======
 import { AuthService } from '../../../services/auth/auth.service';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
->>>>>>> f99c4bd437656912a35cda545c39477c5b13be33
 
 
 @Component({
