@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Login } from '../../../models/login.model';
 import { LoginService } from '../../../services/auth/login.service';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, LottieComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -16,7 +17,9 @@ export class LoginComponent {
      email: '',
      password: ''
    }
-
+   options: AnimationOptions = {
+    path: '/assets/Illustration.json',
+  };
    loginServ = inject(LoginService)
 
    login(){
