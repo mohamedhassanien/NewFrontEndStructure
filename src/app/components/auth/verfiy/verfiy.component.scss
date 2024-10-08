@@ -2,15 +2,29 @@
 
 
 .card-left-con{
-    .code-card{
+    .code-card,.code-card input{
         width: 61.5px;
         height: 59px;
         display: flex;
         justify-content: center;
-        align-items: center;
-        box-shadow: 4px 6px 15px 0px #0000000F;
+        align-items: center; 
         font-size: 32px;
         font-weight: 500;
         color: #808080 !important;
+        text-align: center;
+    }
+    .code-card{
+        box-shadow: 4px 6px 15px 0px #0000000F;
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    }
+    .code-card input:focus {
+        outline: none;
     }
 }

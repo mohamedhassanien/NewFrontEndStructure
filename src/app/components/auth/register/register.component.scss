@@ -34,6 +34,16 @@ section{
                         input:-webkit-autofill:active {
                             transition: background-color 5000000s ease-in-out 0s !important;
                         }
+                        .toggle-password-icon{
+                            position: absolute;
+                            top:15px;
+                            right: 14px;
+                            cursor: pointer;
+                            font-size: 24px;
+                            color: #C0BDCC !important;
+                            z-index: 22;
+                            
+                        }
 
                         label{
                             top:-15px;
