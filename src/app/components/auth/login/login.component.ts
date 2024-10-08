@@ -13,9 +13,11 @@ import { AuthService } from '../../../services/auth/auth.service';
   standalone: true,
   imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule,LottieComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  
 })
 export class LoginComponent implements OnInit{
+  
   showPassword:boolean = false ;
   loginForm!:FormGroup;
 
