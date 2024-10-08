@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Register } from '../../../models/register.model';
-import { RegisterService } from '../../../services/auth/register.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -44,7 +44,7 @@ ngOnInit(): void {
     repassword:new FormControl('',Validators.required)
   })
 }
-registerService = inject(RegisterService)
+auth = inject(AuthService)
 togglePasswordVisiblity():void{
   this.showPassword = !this.showPassword;
 }
@@ -53,7 +53,7 @@ toggleRepassVisiblity():void{
 }
 
 register(){
-this.registerService.register(this.registerObj).subscribe((data:any)=>{
+this.auth.register(this.registerObj).subscribe((data:any)=>{
    console.log(data)
 })
 }

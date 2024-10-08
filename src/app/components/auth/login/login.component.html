@@ -22,7 +22,8 @@
                         <label for="password" class="position-absolute px-2">Password</label>
                         <input type="{{ showPassword ? 'text' :'password' }}" id="password" class="border-0 w-100 bg-white ps-2" formControlName="password">
                         <!-- <mat-icon fontSet="material-icons-outlined" (click)="togglePassswordVisiblity()">{{ showPassword ? "visibility_off" : "visibility_outlined"}}</mat-icon> -->
-                        <i class="toggle-password-icon" (click)="togglePassswordVisiblity()" [class]="showPassword ? 'fa fa-eye-slash': 'fa fa-eye'"></i>
+                        <i class="toggle-password-icon" [ngClass]="showPassword ? 'fa fa-eye-slash': 'fa fa-eye'" (click)="togglePassswordVisiblity()"></i>
+
                       </div>
                       <p class="text-danger ps-3" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">Pasword is required.</p>
 
