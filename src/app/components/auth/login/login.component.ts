@@ -5,6 +5,7 @@ import { Login } from '../../../models/login.model';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../../../services/auth/auth.service';
+import { AnimationOptions } from 'ngx-lottie';
 
 
 @Component({
@@ -22,6 +23,9 @@ export class LoginComponent implements OnInit{
      email: '',
      password: ''
    }
+   options: AnimationOptions = {
+    path: '/assets/Illustration.json',
+  };
 
    ngOnInit(): void {
      this.loginForm = new FormGroup({
