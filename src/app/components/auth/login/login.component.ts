@@ -1,17 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Login } from '../../../models/login.model';
 import { LoginService } from '../../../services/auth/login.service';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { AnimationOptions } from 'ngx-lottie';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule],
+
+  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule, LottieComponent],
+
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -23,9 +26,11 @@ export class LoginComponent implements OnInit{
      email: '',
      password: ''
    }
+
    options: AnimationOptions = {
     path: '/assets/Illustration.json',
   };
+
 
    ngOnInit(): void {
      this.loginForm = new FormGroup({
