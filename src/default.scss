@@ -1,9 +1,11 @@
 // background color
 $bg-color: #F5F7FA;
-
+$min-text: #121212;
 // main colors
 $Primary-color: #AA80F9;
 $Secondary-color: #B1A9D4;
+$sidebar-color:#FAFBFF;
+$sidebar-border: #e8e8e8;
 
 // State-Color
 $State-Color-1: #7F6ECC;
@@ -15,10 +17,10 @@ $State-Color-6: #7DD295;
 $State-Color-7: #216FED;
 $State-Color-8: #649AF2;
 
-//button-color: 
-$button-color:#7F6ECC;
-//button-shadow: 
-$button-shadow:0px 3px 20px 0px  #9431BD80;
+$white-color: #fff;
+$red-color: #FE5C73;
+
+$shadow:0px 3px 20px 0px  #9431BD80;
 
 //gradient-colors:
 
@@ -37,3 +39,6 @@ $font-16: 16px;
 $font-15: 15px;
 $font-14: 14px;
 $font-13: 13px;
+
+$Radius: 70px;
+

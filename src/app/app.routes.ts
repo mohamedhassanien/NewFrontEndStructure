@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from './components/auth/reset-password/reset-p
 // import { RegisterComponent } from './components/auth/register/register.component';
 import { VerfiyComponent } from './components/auth/verfiy/verfiy.component';
 import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { LeadsComponent } from './components/pages/leads/leads.component';
 
 export const routes: Routes = [
     {
@@ -42,6 +43,11 @@ export const routes: Routes = [
             {
                 path: 'statistics',
                 component: StatisticsComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path: 'leads',
+                component: LeadsComponent,
                 canActivate:[authGuard]
             },
             {
