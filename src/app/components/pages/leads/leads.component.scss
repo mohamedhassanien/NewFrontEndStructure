@@ -8,8 +8,18 @@
 
 .component_table{
     margin-top: 40px;
+    border-radius: 25px;
+    overflow: hidden;
+    border-color: #eeeeee;
+}
+table{
+    box-shadow: 4px 4px 18px -2px #E7E4E8CC;
+
 }
 
+.p-progressbar{
+  height: 8px;
+}
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: $State-Color-1
   }

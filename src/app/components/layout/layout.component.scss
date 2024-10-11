@@ -7,6 +7,8 @@
     padding-right: 20px;
     border: 1px solid $sidebar-border;
     margin-right: 20px;
+    position: sticky;
+    top: 0px;
 }
 .main_page{
     width: calc(100% - 290px);
