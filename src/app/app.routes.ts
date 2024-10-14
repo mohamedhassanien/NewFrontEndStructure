@@ -5,10 +5,10 @@ import { StatisticsComponent } from './components/pages/statistics/statistics.co
 import { ProspectComponent } from './components/pages/prospect/prospect.component';
 import { authGuard } from './guard/auth.guard';
 import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
-import { RegisterComponent } from './components/auth/register/register.component';
+// import { RegisterComponent } from './components/auth/register/register.component';
 import { VerfiyComponent } from './components/auth/verfiy/verfiy.component';
 import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
-import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
+import { LeadsComponent } from './components/pages/leads/leads.component';
 
 export const routes: Routes = [
     {
@@ -24,10 +24,10 @@ export const routes: Routes = [
         path:'reset-password',
         component:ResetPasswordComponent
     },
-    {
-        path:'sign-up',
-        component:RegisterComponent
-    },
+    // {
+        // path:'sign-up',
+        // component:RegisterComponent
+    // },
     {
         path:'verify',
         component:VerfiyComponent
@@ -43,6 +43,11 @@ export const routes: Routes = [
             {
                 path: 'statistics',
                 component: StatisticsComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path: 'leads',
+                component: LeadsComponent,
                 canActivate:[authGuard]
             },
             {

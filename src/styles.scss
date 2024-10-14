@@ -1,6 +1,67 @@
+@use '@angular/material' as mat;
 @import './default.scss';
 
 
-body{
+body {
     background-color: $bg-color;
+    color: $min-text;
 }
+ul{
+    padding: 0;
+}
+.p-datatable {
+    .p-datatable-thead {
+
+        &>tr {
+            &>th {
+                background-color: $white-color;
+                border-bottom: 1px solid $State-Color-9;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .p-datatable-tbody {
+        &>tr {
+            &>td {
+                border-bottom: 1px solid $State-Color-9;
+            }
+        }
+    }
+}
+$theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  )
+));
+
+body {
+  @include mat.all-component-themes($theme);
+}
+
+html {
+  height: 100%;
+}
+.mat-mdc-menu-content{
+    background-color: $white-color;
+    
+    .mdc-button__label{
+        color: $min-text;
+    }
+    .mat-mdc-menu-item{
+        min-height: 40px;
+
+        svg{
+            margin-right: 10px;
+        }
+    }
+}
+
+
+@include mat.core();
+@include mat.color-variants-backwards-compatibility($theme);
+
+

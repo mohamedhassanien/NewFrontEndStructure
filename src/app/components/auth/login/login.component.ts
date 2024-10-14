@@ -1,17 +1,29 @@
+<<<<<<< HEAD
 import {  Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+=======
+import { FormsModule } from '@angular/forms';
 import { Login } from '../../../models/login.model';
+import { AuthService } from '../../../services/auth/auth.service';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
+import { Component, inject, OnInit } from '@angular/core';
+>>>>>>> a1132ab0cd336328a09cfb717125a27d68fc1026
+import { RouterModule } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+<<<<<<< HEAD
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { AuthService } from '../../../services/auth/auth.service';
+=======
+>>>>>>> a1132ab0cd336328a09cfb717125a27d68fc1026
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule,LottieComponent],
+
+  imports: [FormsModule, RouterModule ,CommonModule , MatIconModule ,ReactiveFormsModule, LottieComponent],
+
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   
@@ -26,9 +38,11 @@ export class LoginComponent implements OnInit{
      email: '',
      password: ''
    }
+
    options: AnimationOptions = {
     path: '/assets/Illustration.json',
   };
+
 
    ngOnInit(): void {
      this.loginForm = new FormGroup({

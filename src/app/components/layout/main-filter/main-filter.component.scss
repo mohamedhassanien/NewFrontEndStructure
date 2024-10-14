@@ -1,0 +1,10 @@
+@import '../../../../default.scss';
+
+select{
+    background-color: $white-color;
+    border-radius: $Radius;
+    border: 1px solid $State-Color-1;
+    height: 45px;
+    padding: 10px;
+    margin-right: 15px;
+}
