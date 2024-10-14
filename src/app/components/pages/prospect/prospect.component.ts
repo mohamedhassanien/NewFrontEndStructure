@@ -1,24 +1,12 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {provideNativeDateAdapter} from '@angular/material/core';
-
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-prospect',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  imports: [],
   templateUrl: './prospect.component.html',
-  styleUrl: './prospect.component.scss',
-  providers: [provideNativeDateAdapter()],
-
+  styleUrl: './prospect.component.scss'
 })
 export class ProspectComponent {
-  
+
 }

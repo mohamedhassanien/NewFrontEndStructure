@@ -12,10 +12,15 @@ import { LeadsService } from '../../../services/components/leads.service';
 
 
 
-
+import { TableModule } from 'primeng/table';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { DropdownModule } from 'primeng/dropdown';
-import { TableModule } from 'primeng/table';
+import { BadgeModule } from 'primeng/badge';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
+
+
 
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -46,7 +51,11 @@ import {
     ReactiveFormsModule,
     MatMenuModule,
     MatButtonModule,
-    NgxIntlTelInputModule],
+    NgxIntlTelInputModule,
+    BadgeModule,
+    IconFieldModule,
+    InputIconModule,
+    InputTextModule],
   templateUrl: './leads.component.html',
   styleUrl: './leads.component.scss',
   providers: [LeadsService]
@@ -95,6 +104,23 @@ export class LeadsComponent {
   }
 
 
+  editingRow: any = null;
+
+  editCell(rowData: any, field: string) {
+    this.editingRow = rowData;
+    rowData.editing = true;
+
+    console.log('doble')
+  }
+
+  onRowEditSave(rowData: any) {
+    rowData.editing = false;
+    // Add any save logic here
+  }
+
+  onRowEditCancel(rowData: any) {
+    rowData.editing = false;
+  }
 
   ngOnInit() {
     this.leadsService.getProductsMini().then((data: any) => {
@@ -119,6 +145,14 @@ export class LeadsComponent {
       value = 25;
     }
     return (value / max) * 100;
+  }
+  getScoreColor(score: number) {
+    if (score == 1) return 'red';
+    else if (score == 2) return 'yellow';
+    else if (score == 3) return 'orange';
+    else if (score == 4) return 'blue';
+    else if (score == 5) return 'green';
+    else return 'white';
   }
 
 
