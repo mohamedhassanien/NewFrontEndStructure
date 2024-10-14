@@ -1,0 +1,102 @@
+@import '../../../../default.scss';
+
+header {
+    height: 80px;
+    background: linear-gradient(90deg, #8574CA 0%, #B1A9D4 100%);
+    display: flex;
+    align-items: center;
+
+    .header_logo {
+        width: 270px;
+        height: 80px;
+        border-right: 1px solid #E6EFF5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user_name {
+        height: 80px;
+        display: flex;
+        align-items: center;
+
+        h4 {
+            color: #fff;
+            padding-left: 20px;
+            margin: 0;
+            font-size: $font-28;
+            text-transform: capitalize;
+        }
+    }
+
+    .header_actions {
+        padding-right: 15px;
+        display: flex;
+        flex-direction: row-reverse;
+
+        .user_img {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .notifications,
+        .setting {
+            margin-right: 15px;
+
+            div {
+                width: 40px;
+                height: 40px;
+                background-color: #fff;
+                color: $red-color;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+                cursor: pointer;
+            }
+        }
+
+        .setting {
+            div {
+                color: $State-Color-1;
+            }
+        }
+        .search{
+            position: relative;
+            input{
+                background-color: $white-color;
+                border-radius: 40px;
+                color: $State-Color-1;
+                padding-left: 40px;
+                padding-right: 10px;
+                width: 250px;
+                height: 40px;
+                border: none;
+                margin-right: 15px;
+                font-size: $font-15;
+            }
+            svg{
+                position: absolute;
+                top: 12px;
+                left: 15px;
+                color: $State-Color-1;
+            }
+        }
+    }
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $State-Color-1;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: $State-Color-1;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: $State-Color-1;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: $State-Color-1;
+  }

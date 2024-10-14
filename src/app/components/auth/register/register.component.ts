@@ -58,8 +58,8 @@ this.auth.register(this.registerObj).subscribe((data:any)=>{
 })
 }
 
-onSubmit(registerForm:FormGroup){
-  this.registerObj = registerForm.value;
-  console.log(this.registerObj)
-}
+// onSubmit(registerForm:FormGroup){
+//   this.registerObj = registerForm.value;
+//   console.log(this.registerObj)
+// }
 }

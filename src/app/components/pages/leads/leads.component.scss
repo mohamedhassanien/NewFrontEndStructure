@@ -1,0 +1,34 @@
+@import '../../../../default.scss';
+.leads{
+    h3{
+        font-size: $font-28;
+        margin-bottom: 30px;
+    }
+}
+
+.component_table{
+    margin-top: 40px;
+    border-radius: 25px;
+    overflow: hidden;
+    border-color: #eeeeee;
+}
+table{
+    box-shadow: 4px 4px 18px -2px #E7E4E8CC;
+
+}
+
+.p-progressbar{
+  height: 8px;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $State-Color-1
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: $State-Color-1
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: $State-Color-1
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: $State-Color-1
+  }
