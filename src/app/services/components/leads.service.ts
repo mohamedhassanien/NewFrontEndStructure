@@ -18,7 +18,7 @@ export class LeadsService {
 
                 score: 1,
                 remindes: "25+ days",
-                status:"Account Created",
+                status:"Docs uploaded",
                 phone_number: "0100",
                 email_address:"awuavictoria2003@gmail.com",
                 tags:"Business & Management",
@@ -61,7 +61,7 @@ export class LeadsService {
 
                 score: 3,
                 remindes: "25+ days",
-                status:"Account Created",
+                status:"Invited lead",
                 phone_number: "+33366664454",
                 email_address:"awuavictoria2003@gmail.com",
                 tags:"Business & Management",
