@@ -52,8 +52,11 @@ table{
   .selected_select{
     white-space: nowrap;
   }
+ .modal-con{
+  
 
   mat-tab-group{
+
     mat-tab{
       border-bottom: 2px solid $State-Color-1 !important;
 
@@ -70,6 +73,13 @@ table{
     }
     
   }
+
+  .doneBtn{
+   background-color: $State-Color-1;
+   color: white;
+  }
+ }
+ 
 
   form{
     overflow-x: hidden !important;
@@ -106,7 +116,9 @@ table{
           font-weight:600;
           
       }
+
     }
+  
      
   }
 

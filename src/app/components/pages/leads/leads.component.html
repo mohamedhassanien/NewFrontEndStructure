@@ -151,12 +151,12 @@
                                     <span>View</span>
                                 </button>
                                 <ng-template #studentView let-d="dismiss">
-                                    <div class="container py-5 px-4">
-
+                                    <div class="container modal-con py-5 px-4">
+                                        
                                         <mat-tab-group>
                                             <mat-tab label="Main information" class="mainInfoTab">
                                             <h3 class="mt-3">Information</h3>  
-                                            <form class="px-2">
+                                            <form class="px-2 mb-5 pb-5">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="input-caption position-relative mt-4 p-3 rounded-5">
@@ -197,20 +197,31 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
-                                                        <div class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                        <div class="input-caption position-relative my-4 p-3 rounded-5">
                                                             <label for="nationality" class="position-absolute px-2">Maximum budget/year</label>
                                                             <input type="number" class="border-0 w-100 bg-white ps-2">
                                                         </div>
                                                     </div>
+                                                    <div class="col-6">
+                                                        <div class="my-4 p-3">
+                                                            <input type="checkbox" id="alternance">
+                                                            <label for="alternance" class="ms-3">Alternance</label>
+                                                        </div>
+                                                    </div>
                                                    
                                                 </div>
+
+                                               
                                             </form>  
+
                                             </mat-tab>
                                             <mat-tab label="New tag">newTag </mat-tab>
                                             <mat-tab label="Score">score</mat-tab>
                                             <mat-tab label="Language test">langTest</mat-tab>
 
                                           </mat-tab-group>
+                                          <button type="button" class="d-flex justify-content-end doneBtn border-0 px-5 py-3 rounded-5 ms-auto">Done</button>
+
                                     </div>
                                 </ng-template>
                                 <button mat-menu-item [matMenuTriggerFor]="assign">
