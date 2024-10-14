@@ -5,6 +5,27 @@ export class LeadsService {
     getProductsData() {
         return [
             {
+                id: '999',
+                code: 'nvklal433',
+                name: 'Black Watch',
+                description: 'Product Description',
+                image: 'black-watch.jpg',
+                price: 72,
+                category: 'Accessories',
+                quantity: 61,
+                inventoryStatus: 'OUTOFSTOCK',
+                rating: 4,
+
+                score: 1,
+                remindes: "25+ days",
+                status:"Docs uploaded",
+                phone_number: "0100",
+                email_address:"awuavictoria2003@gmail.com",
+                tags:"Business & Management",
+                source: "Facebook",
+                reminder: 3
+            },
+            {
                 id: '1000',
                 code: 'f230fh0g3',
                 name: 'Bamboo Watch',
@@ -16,13 +37,14 @@ export class LeadsService {
                 inventoryStatus: 'INSTOCK',
                 rating: 5,
 
-                score: 7,
+                score: 2,
                 remindes: "25+ days",
                 status:"Account Created",
                 phone_number: "+33366664454",
                 email_address:"awuavictoria2003@gmail.com",
                 tags:"Business & Management",
-                source: "Facebook"
+                source: "Facebook",
+                reminder: 10
 
             },
             {
@@ -37,13 +59,14 @@ export class LeadsService {
                 inventoryStatus: 'OUTOFSTOCK',
                 rating: 4,
 
-                score: 7,
+                score: 3,
                 remindes: "25+ days",
-                status:"Account Created",
+                status:"Invited lead",
                 phone_number: "+33366664454",
                 email_address:"awuavictoria2003@gmail.com",
                 tags:"Business & Management",
-                source: "Facebook"
+                source: "Facebook",
+                reminder: 15
             },
             {
                 id: '1002',
@@ -57,13 +80,14 @@ export class LeadsService {
                 inventoryStatus: 'LOWSTOCK',
                 rating: 3,
 
-                score: 7,
+                score: 4,
                 remindes: "25+ days",
                 status:"Account Created",
                 phone_number: "+33366664454",
                 email_address:"awuavictoria2003@gmail.com",
                 tags:"Business & Management",
-                source: "Facebook"
+                source: "Facebook",
+                reminder: 30
             },
             {
                 id: '1003',
@@ -77,13 +101,14 @@ export class LeadsService {
                 inventoryStatus: 'INSTOCK',
                 rating: 5,
 
-                score: 7,
+                score: 5,
                 remindes: "25+ days",
                 status:"Account Created",
                 phone_number: "+33366664454",
                 email_address:"awuavictoria2003@gmail.com",
                 tags:"Business & Management",
-                source: "Facebook"
+                source: "Facebook",
+                reminder: 50
             },
             {
                 id: '1004',
@@ -95,15 +120,16 @@ export class LeadsService {
                 category: 'Accessories',
                 quantity: 73,
                 inventoryStatus: 'INSTOCK',
-                rating: 4,
+                rating: 3,
 
-                score: 7,
+                score: 2,
                 remindes: "25+ days",
                 status:"Account Created",
                 phone_number: "+33366664454",
                 email_address:"awuavictoria2003@gmail.com",
                 tags:"Business & Management",
-                source: "Facebook"
+                source: "Facebook",
+                reminder: 25
             },
             {
                 id: '1005',
@@ -123,7 +149,8 @@ export class LeadsService {
                 phone_number: "+33366664454",
                 email_address:"awuavictoria2003@gmail.com",
                 tags:"Business & Management",
-                source: "Facebook"
+                source: "Facebook",
+                reminder: 24
             },
             {
                 id: '1006',
