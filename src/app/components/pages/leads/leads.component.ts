@@ -9,6 +9,7 @@ import { MainFilterComponent } from "../../layout/main-filter/main-filter.compon
 
 import { Leads } from '../../../models/leads';
 import { LeadsService } from '../../../services/components/leads.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -55,7 +56,7 @@ import {
     BadgeModule,
     IconFieldModule,
     InputIconModule,
-    InputTextModule],
+    InputTextModule,MatTabsModule],
   templateUrl: './leads.component.html',
   styleUrl: './leads.component.scss',
   providers: [LeadsService]
