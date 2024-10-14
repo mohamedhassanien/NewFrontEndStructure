@@ -32,6 +32,7 @@ registerObj:Register ={
   password:'',
   rePassword:''
 }
+onSubmit: any;
 ngOnInit(): void {
   this.registerForm = new FormGroup({
     firstName: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),

@@ -9,6 +9,7 @@ import { MainFilterComponent } from "../../layout/main-filter/main-filter.compon
 
 import { Leads } from '../../../models/leads';
 import { LeadsService } from '../../../services/components/leads.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -58,7 +59,10 @@ import { StudentDataComponent } from "../../layout/student-data/student-data.com
     IconFieldModule,
     InputIconModule,
     InputTextModule,
-    MultiSelectModule, StudentDataComponent],
+    MultiSelectModule, 
+    StudentDataComponent,
+    InputTextModule,
+    MatTabsModule],
   templateUrl: './leads.component.html',
   styleUrl: './leads.component.scss',
   providers: [LeadsService]
