@@ -1,0 +1,141 @@
+@import '../../../../default.scss';
+
+.lead_img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $light-gray;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.lead_name {
+    font-weight: 200;
+}
+
+.aploaded_documents {
+    background-color: $bg-color;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.student_main_data {
+    background-color: $white_gray;
+    padding: 16px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    color: $min-text;
+    font-weight: 200;
+    margin-bottom: 25px;
+    align-items: center;
+
+    div {
+        div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    svg {
+        color: $min-text;
+        margin-right: 10px;
+    }
+
+    img {
+        margin-left: 15px;
+    }
+
+    .representative_data {
+        width: 200px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: block;
+        }
+
+        span {
+            display: block;
+
+            &:last-child {
+                color: $semi-dark-gray2;
+                font-size: $font-12;
+            }
+        }
+    }
+}
+
+.stuent_choies {
+    .choies_title {
+        color: $State-Color-1;
+        margin-right: 10px;
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+
+    .choies_data {
+        color: $min-text;
+        background-color: $white-yellow;
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin-right: 10px;
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+}
+.representative_comment{
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    label{
+        color: $State-Color-1;
+        display: block;
+        position: absolute;
+        top: -13px;
+        left: 35px;
+        background: $white-color;
+        padding: 0 10px;
+    }
+    textarea{
+        border: 1px solid $border-color;
+        box-shadow: $border-shadow;
+        width: 100%;
+        border-radius: 30px;
+        height: 110px;
+        padding: 20px;
+    }
+}
+
+.representative_created{
+    font-size: 12px;
+}
+.created_time{
+    font-size: 10px;
+    color: $semi-dark-gray2;
+}
+.edit_btn{
+    border: none;
+    background-color: $State-Color-1;
+    border-radius: 30px;
+    font-size: 16px;
+    color: $white-color;
+    padding: 15px 50px;
+    box-shadow: 0px 3px 10px 0px #9431BD4D;
+
+    svg{
+        margin-right: 10px;
+    }
+}

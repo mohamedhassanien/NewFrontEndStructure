@@ -6,6 +6,6 @@ export interface Leads {
     status?: number;
     phone_number?: number;
     email_address?: string;
-    tags?: string;
-    source?: string;
+    tags?: [];
+    source?: [];
 }

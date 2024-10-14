@@ -19,6 +19,9 @@ import { BadgeModule } from 'primeng/badge';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SelectItem } from 'primeng/api';
+
 
 
 
@@ -28,7 +31,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 
 
@@ -37,6 +39,7 @@ import {
   SearchCountryField,
   CountryISO
 } from "ngx-intl-tel-input";
+import { StudentDataComponent } from "../../layout/student-data/student-data.component";
 
 @Component({
   selector: 'app-leads',
@@ -51,11 +54,11 @@ import {
     ReactiveFormsModule,
     MatMenuModule,
     MatButtonModule,
-    NgxIntlTelInputModule,
     BadgeModule,
     IconFieldModule,
     InputIconModule,
-    InputTextModule],
+    InputTextModule,
+    MultiSelectModule, StudentDataComponent],
   templateUrl: './leads.component.html',
   styleUrl: './leads.component.scss',
   providers: [LeadsService]
@@ -90,16 +93,44 @@ export class LeadsComponent {
   }
   ];
 
-  separateDialCode = false;
-  SearchCountryField = SearchCountryField;
-  CountryISO = CountryISO;
-  preferredCountries: CountryISO[] = [
-    CountryISO.UnitedStates,
-    CountryISO.UnitedKingdom
+
+  sources: SelectItem[] = [
+    { label: 'Direct Message META', value: 'Direct Message META' },
+    { label: 'Facebook Groups', value: 'Facebook Groups' },
+    { label: 'Study in France FB Group', value: 'Study in France FB Group' },
+    { label: 'WhatsApp Groups', value: 'WhatsApp Groups' },
+    { label: 'Prospection : INSTA', value: 'Prospection : INSTA' },
+    { label: 'Prospection : LINKEDIN', value: 'Prospection : LINKEDIN' },
+    { label: 'WOM', value: 'WOM' },
+    { label: 'Fair', value: 'Fair' },
+    { label: 'Ambassador', value: 'Ambassador' },
+    { label: 'Cyrus', value: 'Cyrus' },
+    { label: 'Oussama', value: 'Oussama' },
+    { label: 'Marwa', value: 'Marwa' },
+    { label: 'Manal', value: 'Manal' },
+    { label: 'Fatima', value: 'Fatima' },
+    { label: 'Meta Ads', value: 'Meta Ads' },
+    { label: 'Houda', value: 'Houda' },
+    { label: 'Ani', value: 'Ani' },
+    { label: 'Abdelwahab', value: 'Abdelwahab' },
+    { label: 'Website', value: 'Website' },
+    { label: 'Ali', value: 'Ali' },
+    { label: 'Karim', value: 'Karim' },
+    { label: 'Hiba EL Barkaoui', value: 'Hiba EL Barkaoui' },
+    { label: 'Ez-eddine Douieb', value: 'Ez-eddine Douieb' },
+    { label: 'Halima Couki', value: 'Halima Couki' },
+    { label: 'Manal elkobbi', value: 'Manal elkobbi' },
+    { label: 'Other', value: 'Other' },
   ];
 
 
-  constructor(private leadsService: LeadsService, private _Router: Router, private _ModalService: NgbModal,) {
+  tags: SelectItem[] = [
+    {label: 'Data Science', value:'Data Science'},
+    {label: 'Computer Science', value:'Computer Science'},
+    {label: 'Informatique', value:'Informatique'},
+    {label: 'Cybersecurity', value:'Cybersecurity'}
+  ]
+  constructor(private leadsService: LeadsService, private _Router: Router, private _ModalService: NgbModal) {
 
   }
 
@@ -126,9 +157,6 @@ export class LeadsComponent {
     this.leadsService.getProductsMini().then((data: any) => {
       this.leads = data;
     });
-  }
-  changePreferredCountries() {
-    this.preferredCountries = [CountryISO.India, CountryISO.Canada];
   }
 
   getProgressColor(days: number): string {
@@ -159,6 +187,9 @@ export class LeadsComponent {
   openModal(element: any, className: string, size: string, data: any[]) {
     this._ModalService.open(element, { windowClass: className, size: size });
   }
+  closeModal(){
+    this._ModalService.dismissAll();
+  }
 
   sendToMe(name: any) {
 
@@ -166,13 +197,13 @@ export class LeadsComponent {
   assignToEmployee(leadName: any, empName: any) {
 
   }
-  sendToProspect(leadsName:any){
+  sendToProspect(leadsName: any) {
 
   }
-  openModalArchive(leadsName:any){
+  openModalArchive(leadsName: any) {
 
   }
-  
+
 }
 
 
