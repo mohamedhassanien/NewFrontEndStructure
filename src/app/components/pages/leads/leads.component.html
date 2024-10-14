@@ -6,40 +6,33 @@
     </div>
     <div>
         <div class="component_table card">
-            <p-table [value]="leads" 
-                    [scrollable]="true" 
-                    [paginator]="true" 
-                    [rows]="9"
-                    [rowsPerPageOptions]="[5, 10, 20]"
-                    [globalFilterFields]="['name', 'leads.name', 'leads.phone_number', 'phone_number']"
-
-                    #dt2
-                    >
-                    <ng-template pTemplate="caption">
+            <p-table [value]="leads" [scrollable]="true" [paginator]="true" [rows]="9"
+                [rowsPerPageOptions]="[5, 10, 20]"
+                [globalFilterFields]="['name', 'leads.name', 'leads.phone_number', 'phone_number']" #dt2>
+                <ng-template pTemplate="caption">
                     <p-iconField iconPosition="left" class="ml-auto">
                         <p-inputIcon style="position: relative;top: -3px; left: 4px;">
                             <i class="fas fa-search"></i>
                         </p-inputIcon>
-                        <input 
-                            pInputText 
-                            type="text" 
-                            (input)="dt2.filterGlobal($any($event.target).value, 'contains')" 
-                            placeholder="Search in Leads"
-                            style="border-radius: 70px; height: 45px;" />
+                        <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search in Leads" style="border-radius: 70px; height: 45px;" />
                     </p-iconField>
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
                         <th style="width: 10rem">ID</th>
-                        <th pSortableColumn="name" style="min-width: 200px" >Name <p-sortIcon field="name" /></th>
+                        <th pSortableColumn="name" style="min-width: 200px">Name <p-sortIcon field="name" /></th>
                         <th pSortableColumn="score" style="min-width: 100px">Score <p-sortIcon field="score" /></th>
-                        <th pSortableColumn="remindes" style="min-width: 200px">Remindes <p-sortIcon field="remindes" /></th>
+                        <th pSortableColumn="remindes" style="min-width: 200px">Remindes <p-sortIcon field="remindes" />
+                        </th>
                         <th pSortableColumn="status" style="min-width: 200px">Status <p-sortIcon field="status" /></th>
-                        <th pSortableColumn="phone_number" style="min-width: 200px">Phone number <p-sortIcon field="phone_number" /></th>
-                        <th pSortableColumn="email_address" style="min-width: 300px">Email Address <p-sortIcon field="email_address" /></th>
+                        <th pSortableColumn="phone_number" style="min-width: 200px">Phone number <p-sortIcon
+                                field="phone_number" /></th>
+                        <th pSortableColumn="email_address" style="min-width: 300px">Email Address <p-sortIcon
+                                field="email_address" /></th>
                         <th pSortableColumn="tags" style="min-width: 300px">Tags <p-sortIcon field="tags" /></th>
-                        <th pSortableColumn="source" style="min-width: 150px">Source <p-sortIcon field="source" /></th>
+                        <th pSortableColumn="source" style="min-width: 300px">Source <p-sortIcon field="source" /></th>
                         <th style="width: 8rem;"></th>
 
                     </tr>
@@ -49,7 +42,7 @@
                         <td style="width: 4rem">
                             <p-tableCheckbox [value]="leads" />
                         </td>
-                        <td [pEditableColumn]="leads.id" pEditableColumnField="id">
+                        <td>
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
                                     <input pInputText type="text" [(ngModel)]="leads.id" />
@@ -77,20 +70,21 @@
                                 </ng-template>
                                 <ng-template pTemplate="output">
                                     <div class="d-flex justify-content-center">
-                                        <p-badge [styleClass]="getScoreColor(leads.score)" [value]="leads.score"></p-badge>
-                                      </div>
+                                        <p-badge [styleClass]="getScoreColor(leads.score)"
+                                            [value]="leads.score"></p-badge>
+                                    </div>
                                 </ng-template>
                             </p-cellEditor>
                         </td>
-                        <td pEditableColumn [pEditableColumnField]="'reminders'"
-                            [pEditableColumnRowIndex]="rowIndex">
+                        <td pEditableColumn [pEditableColumnField]="'reminders'" [pEditableColumnRowIndex]="rowIndex">
                             <div class="progress-container position-relative">
-                                <span class="reminder_bar"  *ngIf="leads.reminder != undefined">
-                                  {{ leads.reminder > 25 ? "25+ days" : leads.reminder === 1 ? leads.reminder + " day": leads.reminder + " days"
-                                  }}</span>
-                                <p-progressBar [ngClass]="getProgressColor(leads.reminder)" [value]="setProgressValue(leads.reminder)"
-                                  [showValue]="false"></p-progressBar>
-                              </div>
+                                <span class="reminder_bar" *ngIf="leads.reminder != undefined">
+                                    {{ leads.reminder > 25 ? "25+ days" : leads.reminder === 1 ? leads.reminder + "
+                                    day": leads.reminder + " days"
+                                    }}</span>
+                                <p-progressBar [ngClass]="getProgressColor(leads.reminder)"
+                                    [value]="setProgressValue(leads.reminder)" [showValue]="false"></p-progressBar>
+                            </div>
                         </td>
                         <td>
                             <p-cellEditor>
@@ -98,7 +92,12 @@
                                     <input pInputText type="text" [(ngModel)]="leads.status" />
                                 </ng-template>
                                 <ng-template pTemplate="output">
-                                    {{ leads.status }}
+                                    <div class="status_styles" [class.invited_lead]="leads.status == 'Invited Leads'"
+                                        [class.invited_lead]="leads.status == 'Invited lead'"
+                                        [class.docs_uploaded]="leads.status == 'Docs uploaded'"
+                                        [class.account_created]="leads.status == 'Account Created'">
+                                        {{ leads.status }}
+                                    </div>
                                 </ng-template>
                             </p-cellEditor>
                         </td>
@@ -125,20 +124,20 @@
                         <td [pEditableColumn]="leads.tags" pEditableColumnField="tags">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="leads.tags" />
+                                    <p-multiSelect  [options]="tags" display="chip" placeholder="Select sources" [(ngModel)]="leads.tags" [style]="{ width: '100%' }" appendTo="body"></p-multiSelect>
                                 </ng-template>
                                 <ng-template pTemplate="output">
-                                    {{ leads.tags }}
+                                    <div class="selected_select">{{ leads.tags }}</div>
                                 </ng-template>
                             </p-cellEditor>
                         </td>
                         <td [pEditableColumn]="leads.source" pEditableColumnField="source">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="leads.source" />
+                                    <p-multiSelect  [options]="sources" display="chip" placeholder="Select sources" [(ngModel)]="leads.source" [style]="{ width: '100%' }" appendTo="body"></p-multiSelect>
                                 </ng-template>
                                 <ng-template pTemplate="output">
-                                    {{ leads.source }}
+                                    <div class="selected_select">{{ leads.source }}</div>
                                 </ng-template>
                             </p-cellEditor>
                         </td>
@@ -235,7 +234,7 @@
                                 </mat-menu>
 
                                 <button mat-menu-item (click)="
-                                  openModal(comments, 'comments-modal', 'lg', leads.email)
+                                  openModal(comments, 'main-modal', 'lg', leads.email)
                                 ">
                                     <i class="far fa-comment-dots"></i>
                                     <span>Comments</span>
@@ -249,13 +248,22 @@
                                 </button>
 
                                 <button mat-menu-item
-                                    (click)="openModal(archiveView, 'comments-modal', 'lg',  leads.email)">
+                                    (click)="openModal(archiveView, 'main-modal', 'lg',  leads.email)">
                                     <i class="far fa-trash-alt"></i>
                                     <span>Archive</span>
                                 </button>
                                 <ng-template #archiveView let-d="dismiss">
 
                                 </ng-template>
+
+                                <button mat-menu-item (click)="openModal(student_View, 'main-modal', 'lg', [])">
+                                    <i class="far fa-eye"></i>
+                                    <span>View</span>
+                                </button>
+                                <ng-template #student_View let-d="dismiss">
+                                    <app-student-data></app-student-data>  
+                                </ng-template>
+
                             </mat-menu>
                         </td>
                     </tr>
