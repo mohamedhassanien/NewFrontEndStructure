@@ -2,7 +2,10 @@
     <h3>Lead management</h3>
     <div class="d-flex justify-content-between align-items-center">
         <app-main-filter></app-main-filter>
-        <app-main-actions [addTitle]="btn_title"></app-main-actions>
+        <app-main-actions [addTitle]="btn_title" (childEmitter)="openModal(addLead,'main-modal','lg',[])"></app-main-actions>
+        <ng-template #addLead let-d="dismiss">
+            <app-add-lead></app-add-lead>
+         </ng-template>
     </div>
     <div>
         <div class="component_table card">
@@ -146,13 +149,20 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </button>
                             <mat-menu #menu="matMenu">
-                                <button mat-menu-item (click)="openModal(studentView, 'comments-modal', 'lg', [])">
+                                <button mat-menu-item (click)="openModal(student_View, 'main-modal', 'lg', [])">
                                     <i class="far fa-eye"></i>
                                     <span>View</span>
                                 </button>
-                                <ng-template #studentView let-d="dismiss">
-                                   <app-add-lead></app-add-lead>
+                                <ng-template #student_View let-d="dismiss">
+                                    <app-student-data></app-student-data>  
                                 </ng-template>
+                                <!-- <button mat-menu-item (click)="openModal(addLead, 'comments-modal', 'lg', [])">
+                                    <i class="far fa-eye"></i>
+                                    <span>View</span>
+                                </button>
+                                <ng-template #addLead let-d="dismiss">
+                                   <app-add-lead></app-add-lead>
+                                </ng-template> -->
                                 <button mat-menu-item [matMenuTriggerFor]="assign">
                                     <i class="fas fa-share-square"></i>
                                     <span>Assign</span>
@@ -195,13 +205,7 @@
                                 <ng-template #archiveView let-d="dismiss">
                                 </ng-template>
 
-                                <button mat-menu-item (click)="openModal(student_View, 'main-modal', 'lg', [])">
-                                    <i class="far fa-eye"></i>
-                                    <span>View</span>
-                                </button>
-                                <ng-template #student_View let-d="dismiss">
-                                    <app-student-data></app-student-data>  
-                                </ng-template>
+                             
 
                             </mat-menu>
                         </td>
