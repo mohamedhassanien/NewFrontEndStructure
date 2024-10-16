@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 interface SelectItem {
@@ -15,7 +16,8 @@ interface SelectItem {
 @Component({
   selector: 'app-add-lead',
   standalone: true,
-  imports: [MatTabsModule,FormsModule,MatFormFieldModule,MatSelectModule,MatInputModule],
+  imports: [MatTabsModule,FormsModule,MatFormFieldModule,MatSelectModule,MatInputModule,CheckboxModule
+  ],
   templateUrl: './add-lead.component.html',
   styleUrl: './add-lead.component.scss'
 })

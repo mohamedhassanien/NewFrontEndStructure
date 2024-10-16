@@ -51,8 +51,10 @@
                 </div>
                 <div class="col-6">
                     <div class="my-4 p-3">
-                        <input type="checkbox" id="alternance">
-                        <label for="alternance" class="ms-3">Alternance</label>
+                        <p-checkbox 
+                        value="Alternance" 
+                        inputId="alternance" />
+                    <label for="alternance" class="ms-2">Alternance</label>
                     </div>
                 </div>
                
@@ -87,6 +89,7 @@
                             <option value="Both">Both</option>
                          </select>
                       </div>
+                    
 
                 </div>
                 <div class="col-6">
@@ -124,7 +127,6 @@
                 <div class="col-6">
                     <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
                         <label for="intake" class="position-absolute px-2">Intake</label>
-                        <!-- <input type="text" class="border-0 w-100 bg-white ps-2" > -->
                         <select class="border-0 w-100 bg-white ps-2" for="lang" single>
                             <option value="January">January</option>
                             <option value="September">September</option>
@@ -154,16 +156,57 @@
             <h3 class="mt-3">Language test</h3>  
             <div class="lang-con">
                 <mat-tab-group>
-                    <mat-tab label="English">
-                        <form class="px-1 mb-5 pb-5">
-
+                        <mat-tab label="English">
+                            <form class="px-1 mb-5 pb-5 mt-3"> 
+                                <div class="row">
+                                <div class="col-6">
+                                    <div class="input-caption position-relative my-4 p-3 mb-1 rounded-5">
+                                        <label for="english_test" class="position-absolute px-2">English test</label>
+                                        <select class="border-0 w-100 bg-white ps-2" for="english_test" placeholder="English test">
+                                            <option value="ILETS">ILETS</option>
+                                            <option value="TOEFL">TOEFL</option>
+                                            <option value="Duolingo">Duolingo</option>
+                                            <option value="Easy speaking">Easy speaking</option>
+                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
+                                        <label for="en_score" class="position-absolute px-2">Score</label>
+                                        <input type="text" class="border-0 w-100 bg-white ps-2" id="en_score" placeholder="Score">
+                                    </div>
+                                </div>
+                            </div>
                         </form>
-                    </mat-tab>
-                    <mat-tab label="French">French</mat-tab>
+                        </mat-tab>
+                        <mat-tab label="French">
+                            <form class="px-1 mb-5 pb-5 mt-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-caption position-relative my-4 p-3 mb-1 rounded-5">
+                                            <label for="french_test" class="position-absolute px-2">French test</label>
+                                            <select class="border-0 w-100 bg-white ps-2" for="french_test" placeholder="French test">
+                                                <option value="DELF">DELF</option>
+                                                <option value="TOEFL">DALF</option>
+                                                <option value="TCF">TCF</option>
+                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
+                                            <label for="score" class="position-absolute px-2">Score</label>
+                                            <input type="text" class="border-0 w-100 bg-white ps-2" placeholder="Score">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </mat-tab>    
                 </mat-tab-group>
             </div>
-        </mat-tab>
-
+            <button type="submit" class="d-flex justify-content-end doneBtn border-0 mb-3 px-5 py-3 rounded-5 ms-auto">Done</button>
+        </mat-tab>                
       </mat-tab-group>
 
 </div>
+
+
