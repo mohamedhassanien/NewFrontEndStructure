@@ -6,6 +6,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CheckboxModule } from 'primeng/checkbox';
 import {MatDividerModule} from '@angular/material/divider';
+import { CommonModule } from '@angular/common';
 
 
 interface SelectItem {
@@ -24,15 +25,33 @@ interface SelectItem {
     MatSelectModule,
     MatInputModule,
     CheckboxModule,
-    MatDividerModule
+    MatDividerModule,
+    CommonModule
   ],
   templateUrl: './add-lead.component.html',
   styleUrl: './add-lead.component.scss'
 })
 export class AddLeadComponent {
-selectedTabIndex = 0
+selectedTabIndex = 0;
+//-------Score Variables------------
+highSchool:boolean = false;
+isRadioChecked = false;
+isDivVisible = false;
 
+// Handles the button click (also triggered by the radio button)
+onButtonClick() {
+  // Toggle the radio button's checked state
+  this.isRadioChecked = !this.isRadioChecked;
 
+  // Display the div only if the radio button is checked
+  this.isDivVisible = this.isRadioChecked;
+}
+
+// When the radio button is clicked, prevent default action and trigger button click
+onRadioClick(event: Event) {
+  event.stopPropagation(); // Prevent the default radio button behavior
+  this.onButtonClick();     // Trigger the button click logic
+}
 
 //----------------- New tag tab lists --------------------
 
@@ -86,4 +105,10 @@ fieldOfInterest:SelectItem[] =[
       this.selectedTabIndex -=1;
     }
    }
+
+  
+   
 }
+
+
+

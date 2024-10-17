@@ -1,6 +1,6 @@
 <div class="container modal-con py-4 px-3">
                                         
-    <mat-tab-group [(selectedIndex)]="selectedTabIndex">
+    <mat-tab-group [(selectedIndex)]="selectedTabIndex" [dynamicHeight]='true'>
         <mat-tab label="Main information" class="mainInfoTab">
         <h3 class="mt-3">Information</h3>  
         <form class="px-1 mb-5 pb-5">
@@ -70,7 +70,6 @@
                 <div class="col-6">
                     <div class="input-caption position-relative mt-4 mb-1 p-3 rounded-5">
                         <label for="source" class="position-absolute px-2">Source</label>
-                        <!-- <input type="text" class="border-0 w-100 bg-white ps-2" > -->
                          <select class="border-0 w-100 bg-white ps-2" id="source" mul>
                             @for (source of sources; track source) {
                                 <option [value]="source.value">{{source.viewValue}}</option>
@@ -82,8 +81,7 @@
                 <div class="col-6">
                     <div class="input-caption position-relative mt-4 mb-1 p-3 rounded-5">
                         <label for="lang" class="position-absolute px-2">Language</label>
-                        <!-- <input type="text" class="border-0 w-100 bg-white ps-2"  > -->
-                         <select class="border-0 w-100 bg-white ps-2" for="lang" single>
+                         <select class="border-0 w-100 bg-white ps-2" id="lang" single>
                             <option value="English">English</option>
                             <option value="French">French</option>
                             <option value="Both">Both</option>
@@ -111,7 +109,6 @@
                 <div class="col-6">
                     <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
                         <label for="entry_level" class="position-absolute px-2">Entry level(desired)</label>
-                        <!-- <input type="text" class="border-0 w-100 bg-white ps-2" > -->
                         <select class="border-0 w-100 bg-white ps-2" single>
                             <option value="B1">B1</option>
                             <option value="B2">B2</option>
@@ -127,7 +124,7 @@
                 <div class="col-6">
                     <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
                         <label for="intake" class="position-absolute px-2">Intake</label>
-                        <select class="border-0 w-100 bg-white ps-2" for="lang" single>
+                        <select class="border-0 w-100 bg-white ps-2" id="intake" single>
                             <option value="January">January</option>
                             <option value="September">September</option>
                          </select>
@@ -135,9 +132,8 @@
                 </div>
                 <div class="col-6">
                     <div class="input-caption position-relative my-4 p-3 mb-1 rounded-5">
-                        <label for="Year" class="position-absolute px-2">Year</label>
-                        <!-- <input type="number" class="border-0 w-100 bg-white ps-2"> -->
-                        <select class="border-0 w-100 bg-white ps-2" for="lang" single>
+                        <label for="year" class="position-absolute px-2">Year</label>
+                        <select class="border-0 w-100 bg-white ps-2" id="year" single>
                             <option value="2024">2024</option>
                             <option value="2025">2025</option>
                             <option value="2026">2026</option>
@@ -152,27 +148,61 @@
         <button type="button" (click)="goToNextTab()" class="d-flex justify-content-end doneBtn border-0 mb-3 px-5 py-3 rounded-5 ms-auto">Next</button>
         </mat-tab>
         <mat-tab label="Score">
-            <form class="py-3">
-                <h3>What is your current status?</h3>
-                <div class="row">
+            <form class="py-4">
+                <h3 class="text-black mb-4">What is your current status?</h3>
+                <div class="row mb-4">
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
-                            <input type="radio">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick()">
+                            <input type="radio" class="me-2" name="current_status" [checked]="isRadioChecked" (click)="onRadioClick($event)" >
                             <label for="highSchool">I am in High School </label>
                         </button>
                     </div>
                     <div class="col-4">
                         <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
-                            <input type="radio">
+                            <input type="radio" class="me-2" name="current_status">
                             <label for="">I am in university </label>
                         </button>
                     </div>
                     <div class="col-4">
                         <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
-                            <input type="radio">
+                            <input type="radio" class="me-2" name="current_status">
                             <label for="">I have Graduated </label>
                         </button>
                     </div>
+                </div>
+                <div  *ngIf="isDivVisible" class="mb-4">
+                    <div class="row">
+                       <div class="col-3">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">First Year </label>
+                        </button>
+                       </div>
+                       <div class="col-3">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">12th Grade </label>
+                        </button>
+                       </div>
+                    </div>
+                </div>
+                <mat-divider class="divider-color mt-1"></mat-divider>
+               <div class="status-container mb-5">
+                <h3 class="text-black mt-3 mb-4">What is your current status?</h3>
+                <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
+                    <label for="status" class="position-absolute px-2">Status</label>
+                    <select class="border-0 w-100 bg-white ps-2" id="status" single>
+                        <option value="Business and Management">Business and Management</option>
+                     </select>
+                </div>
+               </div>
+                <mat-divider class="divider-color"></mat-divider>
+                <h3 class="text-black mt-3 mb-4">Language test</h3>
+                <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
+                    <label for="language-test" class="position-absolute px-2">Status</label>
+                    <select class="border-0 w-100 bg-white ps-2" id="language-test" single>
+                        <option value="English">English</option>
+                     </select>
                 </div>
             </form>
         </mat-tab>
