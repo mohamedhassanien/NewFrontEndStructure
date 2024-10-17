@@ -41,6 +41,7 @@ import {
   CountryISO
 } from "ngx-intl-tel-input";
 import { StudentDataComponent } from "../../layout/student-data/student-data.component";
+import { AddLeadComponent } from "../add-lead/add-lead.component";
 
 @Component({
   selector: 'app-leads',
@@ -59,10 +60,10 @@ import { StudentDataComponent } from "../../layout/student-data/student-data.com
     IconFieldModule,
     InputIconModule,
     InputTextModule,
-    MultiSelectModule, 
+    MultiSelectModule,
     StudentDataComponent,
     InputTextModule,
-    MatTabsModule],
+    MatTabsModule, AddLeadComponent],
   templateUrl: './leads.component.html',
   styleUrl: './leads.component.scss',
   providers: [LeadsService]
