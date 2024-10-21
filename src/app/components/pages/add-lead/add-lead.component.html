@@ -1,5 +1,13 @@
 <div class="container modal-con py-4 px-3">
-                                        
+  <div class="d-flex justify-content-center mb-4">
+    <div class="radio-toolbar">
+        <input type="radio" id="radio1" name="leadType" value="0" [(ngModel)]="selectedLeadType" />
+        <label for="radio1" [class.checked]="selectedLeadType === '0'">Direct Lead</label>
+      
+        <input type="radio" id="radio2" name="leadType" value="1" [(ngModel)]="selectedLeadType" />
+        <label for="radio2" [class.checked]="selectedLeadType === '1'">Future Lead</label>
+      </div> 
+  </div>                         
     <mat-tab-group [(selectedIndex)]="selectedTabIndex" [dynamicHeight]='true'>
         <mat-tab label="Main information" class="mainInfoTab">
         <h3 class="mt-3">Information</h3>  

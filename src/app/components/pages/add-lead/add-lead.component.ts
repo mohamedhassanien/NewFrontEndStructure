@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -31,8 +31,15 @@ interface SelectItem {
   templateUrl: './add-lead.component.html',
   styleUrl: './add-lead.component.scss'
 })
-export class AddLeadComponent {
+export class AddLeadComponent implements OnInit {
 selectedTabIndex = 0;
+selectedLeadType:string = '0';
+
+
+ngOnInit(): void {
+
+}
+
 //-------Score Variables------------
 selectedButton: number | null = null;
 
@@ -99,9 +106,7 @@ fieldOfInterest:SelectItem[] =[
       this.selectedTabIndex -=1;
     }
    }
-
-  
-   
+ 
 }
 
 
