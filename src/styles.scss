@@ -145,6 +145,10 @@ html {
         }
     }
 }
-
+.validation_msg{
+    padding: 0;
+    color: $red-color;
+    font-size: 14px;
+}
 @include mat.core();
 @include mat.color-variants-backwards-compatibility($theme);
