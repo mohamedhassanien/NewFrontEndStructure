@@ -160,19 +160,19 @@
                 <h3 class="text-black mb-4">What is your current status?</h3>
                 <div class="row mb-4">
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(1)">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center bg-lightgrey" (click)="onButtonClick(1)" [class.clicked]="selectedButton === 1">
                             <input type="radio" class="me-2" name="current_status" [checked]="selectedButton === 1" (click)="onRadioClick($event, 1)" >
                             <label for="highSchool">I am in High School </label>
                         </button>
                     </div>
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(2)">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center bg-lightgrey" (click)="onButtonClick(2)" [class.clicked]="selectedButton === 2">
                             <input type="radio" class="me-2" name="current_status"  [checked]="selectedButton === 2" (click)="onRadioClick($event, 2)">
                             <label for="">I am in university </label>
                         </button>
                     </div>
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(3)">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center bg-lightgrey" (click)="onButtonClick(3)" [class.clicked]="selectedButton === 3">
                             <input type="radio" class="me-2" name="current_status" [checked]="selectedButton === 3" (click)="onRadioClick($event, 3)">
                             <label for="">I have Graduated </label>
                         </button>

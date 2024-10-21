@@ -40,7 +40,7 @@ ngOnInit(): void {
 
 }
 
-//-------Score Variables------------
+//------------------------------------------------Score Variables----------------------------------------------------------------
 selectedButton: number | null = null;
 
   // Handles button click and selects the corresponding button
@@ -54,7 +54,7 @@ selectedButton: number | null = null;
     this.onButtonClick(buttonNumber); // Trigger the same logic as the button click
   }
 
-//----------------- New tag tab lists --------------------
+//-------------------------------------------------------- New tag tab lists --------------------------------------------------
 
 sources: SelectItem[] = [
  { value:'Direct Message META', viewValue:'Direct Message META'},

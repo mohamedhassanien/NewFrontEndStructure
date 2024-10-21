@@ -103,6 +103,18 @@
    .divider-color{
     border-top-color: #F5F4F4;
    }
+   .bg-lightgrey{
+    background-color:#F5F7FA;
+   }
+   .clicked{
+    background-color: #6F77F4;
+    color: white;
+    input[type="radio"]{
+      accent-color: white;
+      width: 15px;
+      height: 15px;
+    }
+   }
    .check-btn{
     background-color: transparent;
     border: 1px solid #F5F4F4;
