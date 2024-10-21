@@ -127,7 +127,9 @@
                         <td [pEditableColumn]="leads.tags" pEditableColumnField="tags">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
-                                    <p-multiSelect  [options]="tags" display="chip" placeholder="Select sources" [(ngModel)]="leads.tags" [style]="{ width: '100%' }" appendTo="body"></p-multiSelect>
+                                    <p-multiSelect [options]="tags" display="chip" placeholder="Select sources"
+                                        [(ngModel)]="leads.tags" [style]="{ width: '100%' }"
+                                        appendTo="body"></p-multiSelect>
                                 </ng-template>
                                 <ng-template pTemplate="output">
                                     <div class="selected_select">{{ leads.tags }}</div>
@@ -137,7 +139,9 @@
                         <td [pEditableColumn]="leads.source" pEditableColumnField="source">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
-                                    <p-multiSelect  [options]="sources" display="chip" placeholder="Select sources" [(ngModel)]="leads.source" [style]="{ width: '100%' }" appendTo="body"></p-multiSelect>
+                                    <p-multiSelect [options]="sources" display="chip" placeholder="Select sources"
+                                        [(ngModel)]="leads.source" [style]="{ width: '100%' }"
+                                        appendTo="body"></p-multiSelect>
                                 </ng-template>
                                 <ng-template pTemplate="output">
                                     <div class="selected_select">{{ leads.source }}</div>
@@ -153,8 +157,84 @@
                                     <i class="far fa-eye"></i>
                                     <span>View</span>
                                 </button>
-                                <ng-template #student_View let-d="dismiss">
-                                    <app-student-data></app-student-data>  
+                                <ng-template #studentView let-d="dismiss">
+                                    <div class="container py-5 px-4">
+
+                                        <mat-tab-group>
+                                            <mat-tab label="Main information" class="mainInfoTab">
+                                                <h3 class="mt-3">Information</h3>
+                                                <form class="px-2">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="fname" class="position-absolute px-2">First
+                                                                    Name</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="lname" class="position-absolute px-2">Last
+                                                                    Name</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Nationality</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Country of
+                                                                    Residence</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Email</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Phone Number</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Maximum
+                                                                    Budget</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </mat-tab>
+                                            <mat-tab label="New tag">newTag </mat-tab>
+                                            <mat-tab label="Score">score</mat-tab>
+                                            <mat-tab label="Language test">langTest</mat-tab>
+
+                                        </mat-tab-group>
+                                    </div>
                                 </ng-template>
                                
                                 <button mat-menu-item [matMenuTriggerFor]="assign">
@@ -184,7 +264,16 @@
                                     <span>Comments</span>
                                 </button>
                                 <ng-template #comments let-d="dismiss">
-                                    Comment
+                                    <form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit(commentForm)"
+                                        class="comment_form">
+                                        <h4>Comments of <span> {{leads.name}} </span></h4>
+                                        <textarea formControlName="comment" placeholder="Your Comment"></textarea>
+                                        <p class="validation_msg" *ngIf="commentForm.get('comment')?.hasError('required') && commentForm.get('comment')?.touched">Comment is required.</p>
+                                        <h5>Emp Name <span>10:40</span></h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button>Send</button>
+                                        </div>
+                                    </form>
                                 </ng-template>
                                 <button mat-menu-item (click)="sendToProspect(leads.username)">
                                     <i class="fas fa-redo-alt"></i>
@@ -197,9 +286,25 @@
                                     <span>Archive</span>
                                 </button>
                                 <ng-template #archiveView let-d="dismiss">
+                                    <form [formGroup]="archiveCommentForm" (ngSubmit)="onArchiveCommentSubmit(archiveCommentForm)"
+                                    class="comment_form">
+                                    <h4>Archive Comment</h4>
+                                    <textarea formControlName="archiveComment" placeholder="Your Archive Comment"></textarea>
+                                    <p class="validation_msg" *ngIf="archiveCommentForm.get('archiveComment')?.hasError('required') && archiveCommentForm.get('archiveComment')?.touched">Archive Comment is required.</p>
+                                    <h5>Emp Name <span>10:40</span></h5>
+                                    <div class="d-flex justify-content-end">
+                                        <button>Send</button>
+                                    </div>
+                                </form>
                                 </ng-template>
 
-                             
+                                <button mat-menu-item (click)="openModal(student_View, 'main-modal', 'lg', [])">
+                                    <i class="far fa-eye"></i>
+                                    <span>View</span>
+                                </button>
+                                <ng-template #student_View let-d="dismiss">
+                                    <app-student-data></app-student-data>
+                                </ng-template>
 
                             </mat-menu>
                         </td>
