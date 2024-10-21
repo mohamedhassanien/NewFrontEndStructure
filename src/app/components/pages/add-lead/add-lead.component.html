@@ -152,38 +152,62 @@
                 <h3 class="text-black mb-4">What is your current status?</h3>
                 <div class="row mb-4">
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick()">
-                            <input type="radio" class="me-2" name="current_status" [checked]="isRadioChecked" (click)="onRadioClick($event)" >
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(1)">
+                            <input type="radio" class="me-2" name="current_status" [checked]="selectedButton === 1" (click)="onRadioClick($event, 1)" >
                             <label for="highSchool">I am in High School </label>
                         </button>
                     </div>
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
-                            <input type="radio" class="me-2" name="current_status">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(2)">
+                            <input type="radio" class="me-2" name="current_status"  [checked]="selectedButton === 2" (click)="onRadioClick($event, 2)">
                             <label for="">I am in university </label>
                         </button>
                     </div>
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
-                            <input type="radio" class="me-2" name="current_status">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(3)">
+                            <input type="radio" class="me-2" name="current_status" [checked]="selectedButton === 3" (click)="onRadioClick($event, 3)">
                             <label for="">I have Graduated </label>
                         </button>
                     </div>
                 </div>
-                <div  *ngIf="isDivVisible" class="mb-4">
+                <div  *ngIf="selectedButton === 1" class="mb-4">
                     <div class="row">
                        <div class="col-3">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
                             <input type="checkbox" class="me-2" name="current_status">
                             <label for="">First Year </label>
                         </button>
                        </div>
                        <div class="col-3">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
                             <input type="checkbox" class="me-2" name="current_status">
                             <label for="">12th Grade </label>
                         </button>
                        </div>
+                    </div>
+                </div>
+                <div  *ngIf="selectedButton === 2" class="mb-4">
+                    <div class="d-flex justify-content-between">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">First Year </label>
+                        </button>
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">Second Year </label>
+                        </button>
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">Third Year </label>
+                        </button>
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">Fourth Year </label>
+                        </button>
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">Above </label>
+                        </button>
                     </div>
                 </div>
                 <mat-divider class="divider-color mt-1"></mat-divider>
