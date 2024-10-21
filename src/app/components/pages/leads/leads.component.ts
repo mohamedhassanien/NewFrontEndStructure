@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { MainActionsComponent } from "../../layout/main-actions/main-actions.component";
@@ -72,6 +72,11 @@ export class LeadsComponent {
   btn_title = 'Add Lead'
   leads!: Leads[];
   scores: number[] = [1, 2, 3, 4, 5];
+  commentForm!:FormGroup;
+  archiveCommentForm!:FormGroup;
+  editingRow: any = null;
+  commentObj: any;
+  archiveCommentObj: any;
   employees: any[] = [{
     name: "Ali",
   },
@@ -96,8 +101,6 @@ export class LeadsComponent {
     name: "Houda Berrada",
   }
   ];
-
-
   sources: SelectItem[] = [
     { label: 'Direct Message META', value: 'Direct Message META' },
     { label: 'Facebook Groups', value: 'Facebook Groups' },
@@ -126,8 +129,6 @@ export class LeadsComponent {
     { label: 'Manal elkobbi', value: 'Manal elkobbi' },
     { label: 'Other', value: 'Other' },
   ];
-
-
   tags: SelectItem[] = [
     {label: 'Data Science', value:'Data Science'},
     {label: 'Computer Science', value:'Computer Science'},
@@ -138,8 +139,17 @@ export class LeadsComponent {
 
   }
 
-
-  editingRow: any = null;
+  ngOnInit() {
+    this.leadsService.getProductsMini().then((data: any) => {
+      this.leads = data;
+    });
+    this.commentForm = new FormGroup({
+      comment: new FormControl('',[Validators.required,Validators.email]),
+     })
+    this.archiveCommentForm = new FormGroup({
+      archiveComment: new FormControl('',[Validators.required,Validators.email]),
+     })
+  }
 
   editCell(rowData: any, field: string) {
     this.editingRow = rowData;
@@ -156,13 +166,6 @@ export class LeadsComponent {
   onRowEditCancel(rowData: any) {
     rowData.editing = false;
   }
-
-  ngOnInit() {
-    this.leadsService.getProductsMini().then((data: any) => {
-      this.leads = data;
-    });
-  }
-
   getProgressColor(days: number): string {
     if (days <= 5) return 'progress-green';
     else if (days <= 10) return 'progress-yellow';
@@ -206,6 +209,12 @@ export class LeadsComponent {
   }
   openModalArchive(leadsName: any) {
 
+  }
+  onCommentSubmit(commentForm:FormGroup){
+    this.commentObj = commentForm.value;
+  }
+  onArchiveCommentSubmit(archiveComment:FormGroup){
+    this.archiveCommentObj = archiveComment.value;
   }
 
 }
