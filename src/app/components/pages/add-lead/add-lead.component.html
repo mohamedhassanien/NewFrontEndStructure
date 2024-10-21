@@ -210,6 +210,12 @@
                         </button>
                     </div>
                 </div>
+                <div *ngIf="selectedButton === 3" class="mb-4">
+                    <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
+                        <label for="edu-level" class="position-absolute px-2">Level of Education</label>
+                        <input type="text" class="border-0 w-100 bg-white ps-2" id="edu-level" placeholder="Score">
+                    </div>
+                </div>
                 <mat-divider class="divider-color mt-1"></mat-divider>
                <div class="status-container mb-5">
                 <h3 class="text-black mt-3 mb-4">What is your current status?</h3>
