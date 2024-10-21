@@ -297,6 +297,15 @@
                                     </div>
                                 </form>
                                 </ng-template>
+
+                                <button mat-menu-item (click)="openModal(student_View, 'main-modal', 'lg', [])">
+                                    <i class="far fa-eye"></i>
+                                    <span>View</span>
+                                </button>
+                                <ng-template #student_View let-d="dismiss">
+                                    <app-student-data></app-student-data>
+                                </ng-template>
+
                             </mat-menu>
                         </td>
                     </tr>
