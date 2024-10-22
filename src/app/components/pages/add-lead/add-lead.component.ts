@@ -26,7 +26,8 @@ interface SelectItem {
     MatInputModule,
     CheckboxModule,
     MatDividerModule,
-    CommonModule
+    CommonModule,
+   
   ],
   templateUrl: './add-lead.component.html',
   styleUrl: './add-lead.component.scss'
@@ -34,7 +35,7 @@ interface SelectItem {
 export class AddLeadComponent implements OnInit {
 selectedTabIndex = 0;
 selectedLeadType:string = '0';
-
+selectedOption:string = '';
 
 ngOnInit(): void {
 
@@ -94,9 +95,15 @@ fieldOfInterest:SelectItem[] =[
  {value:"Other",viewValue:"Other"},
 ];
 
+options = [
+  { label: 'Select an option',value: ''},
+  { label:'English',value:'English'},
+  { label:"French",value:"French"}
+];
+
 
   goToNextTab(){
-   if(this.selectedTabIndex < 2){
+   if(this.selectedTabIndex < 3){
     this.selectedTabIndex +=1;
    }
   }
@@ -105,6 +112,10 @@ fieldOfInterest:SelectItem[] =[
     if(this.selectedTabIndex > 0){
       this.selectedTabIndex -=1;
     }
+   }
+   onOptionChange(event:Event){
+      const  selectedElement = event.target as HTMLSelectElement;
+      this.selectedOption = selectedElement.value
    }
  
 }
