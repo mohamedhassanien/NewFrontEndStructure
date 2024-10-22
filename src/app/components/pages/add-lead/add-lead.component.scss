@@ -13,7 +13,7 @@
     background-color: #7F6ECC;
     color: white;
     padding: 0;
-    width: 40%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,26 +21,27 @@
     input[type="radio"] {
       display: none;
     }
-  
+    input[type="radio"]:checked+label {
+      background-color: #EAD799;
+      font-weight: bold;
+      color: black;
+      width: 50%;
+      border-radius: 25px; 
+      text-align: center;
+    }
+
+    label {
+      display: inline-block;
+      font-family: Arial;
+      font-size: 16px;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px 13px;
+      border-radius: 10px;
+      width: 50%;
+    }
   }
-  .radio-toolbar label {
-    display: inline-block;
-    font-family: Arial;
-    font-size: 16px;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 13px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  .radio-toolbar input[type="radio"]:checked+label {
-    background-color: #EAD799;
-    font-weight: bold;
-    color: black;
-    border-radius: 25px; 
-    width: 60%;
-    text-align: center;
-  }
+ 
 
     mat-tab-group{
       mat-tab{
@@ -115,8 +116,18 @@
       height: 15px;
     }
    }
+ 
    .check-btn{
     background-color: transparent;
     border: 1px solid #F5F4F4;
    }
    
+
+   .graduated{
+    h4{
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: #959595;
+    }
+   }
