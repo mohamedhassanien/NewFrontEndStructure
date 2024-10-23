@@ -1,0 +1,168 @@
+<div class="d-flex justify-content-between" cdkDropListGroup>
+    <div class="grid_container">
+        <div class="d-flex align-items-center">
+            <h2>First contact</h2>
+            <div class="count InvitedataColor">{{firstContact.length}}</div>
+        </div>
+
+        <div cdkDropList [cdkDropListData]="firstContact" class="grid_list" (cdkDropListDropped)="drop($event)">
+            <div class="drag_con">
+                @for (item of firstContact; track item) {
+                <div class="drag-box" cdkDrag>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="card_name">
+                            {{item.name}}
+                        </div>
+                        <div class="card_actions">
+                            <button mat-button [matMenuTriggerFor]="menu">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Item 1</button>
+                                <button mat-menu-item>Item 2</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="card_nationality">
+                        {{item.nationality}}
+                    </div>
+                    <div class="score_emp">
+                        <div class="card_score" [class.score_hight]="item.score >= 3" [class.score_low]="item.score < 3">
+                            Score {{item.score}}
+                        </div>
+                        <div class="emp_name">
+                            <i class="far fa-user"></i>
+                            <span>{{item.emp}}</span>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="grid_container">
+        <div class="d-flex align-items-center">
+            <h2>Checking program</h2>
+            <div class="count accountCreatedColor">{{checkingProgram.length}}</div>
+        </div>
+
+        <div cdkDropList [cdkDropListData]="checkingProgram" class="grid_list" (cdkDropListDropped)="drop($event)">
+            <div class="drag_con">
+                @for (item of checkingProgram; track item) {
+                <div class="drag-box" cdkDrag>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="card_name">
+                            {{item.name}}
+                        </div>
+                        <div class="card_actions">
+                            <button mat-button [matMenuTriggerFor]="menu">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Item 1</button>
+                                <button mat-menu-item>Item 2</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="card_nationality">
+                        {{item.nationality}}
+                    </div>
+                    <div class="score_emp">
+                        <div class="card_score" [class.score_hight]="item.score >= 3" [class.score_low]="item.score == 1" [class.score_yellow]="item.score == 2">
+                            Score {{item.score}}
+                        </div>
+                        <div class="emp_name">
+                            <i class="far fa-user"></i>
+                            <span>{{item.emp}}</span>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="grid_container">
+        <div class="d-flex align-items-center">
+            <h2>Preparing docs</h2>
+            <div class="count accountCreatedColor">{{preparingDocs.length}}</div>
+        </div>
+
+        <div cdkDropList [cdkDropListData]="preparingDocs" class="grid_list" (cdkDropListDropped)="drop($event)">
+            <div class="drag_con">
+                @for (item of preparingDocs; track item) {
+                <div class="drag-box" cdkDrag>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="card_name">
+                            {{item.name}}
+                        </div>
+                        <div class="card_actions">
+                            <button mat-button [matMenuTriggerFor]="menu">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Item 1</button>
+                                <button mat-menu-item>Item 2</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="card_nationality">
+                        {{item.nationality}}
+                    </div>
+                    <div class="score_emp">
+                        <div class="card_score" [class.score_hight]="item.score >= 3" [class.score_low]="item.score == 1" [class.score_yellow]="item.score == 2">
+                            Score {{item.score}}
+                        </div>
+                        <div class="emp_name">
+                            <i class="far fa-user"></i>
+                            <span>{{item.emp}}</span>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="grid_container">
+        <div class="d-flex align-items-center">
+            <h2 class="sentToTitle">Send to Applications</h2>
+            <!-- <div class="count accountCreatedColor">{{AccountData.length}}</div> -->
+        </div>
+
+        <div cdkDropList [cdkDropListData]="sentToProspect" class="grid_list sendTo" (cdkDropListDropped)="drop($event)">
+            <div class="drag_con prospect_con">
+                <h4>Drag the student card here</h4>
+                @for (item of sentToProspect; track item) {
+                <div class="drag-box" cdkDrag>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="card_name">
+                            {{item.name}}
+                        </div>
+                        <div class="card_actions">
+                            <button mat-button [matMenuTriggerFor]="menu">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item>Item 1</button>
+                                <button mat-menu-item>Item 2</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="card_nationality">
+                        {{item.nationality}}
+                    </div>
+                    <div class="score_emp">
+                        <div class="card_score">
+                            Score {{item.score}}
+                        </div>
+                        <div class="emp_name">
+                            <i class="far fa-user"></i>
+                            <span>{{item.emp}}</span>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

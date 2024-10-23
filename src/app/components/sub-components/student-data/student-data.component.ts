@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,6 +9,18 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './student-data.component.scss'
 })
 export class StudentDataComponent {
+
+  @Input() leadName : any;
+  @Input() studentEmail : any;
+  @Input() PhoneNumber : any;
+  @Input() nationality : any;
+  @Input() representative : any;
+  @Input() source : any;
+  @Input() previousSchool : any;
+  @Input() soi : any;
+  @Input() foi : any;
+  @Input() intakeM : any;
+  @Input() intakeY : any;
 
   constructor(private _ModalService: NgbModal) {
 

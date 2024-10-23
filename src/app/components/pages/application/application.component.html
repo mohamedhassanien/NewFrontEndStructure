@@ -1,1 +1,377 @@
-<p>application works!</p>
+<div class="leads">
+    <h3>Applications</h3>
+    <div class="d-flex justify-content-between align-items-center">
+        <app-main-filter></app-main-filter>
+        <app-main-actions [addTitle]="btn_title" (childEmitter)="openModal(addLead,'main-modal','lg',[])"
+            (gridViewEmitter)="showGridView()" (listEmitter)="showListView()" [class.activeGrid]="displayGridView"
+            [class.activeList]="displayListView"></app-main-actions>
+        <ng-template #addLead let-d="dismiss">
+            <app-add-lead></app-add-lead>
+        </ng-template>
+    </div>
+    <div>
+        <div class="component_table card" *ngIf="displayListView">
+            <p-table [value]="application" [scrollable]="true" [paginator]="true" [rows]="9"
+                [rowsPerPageOptions]="[5, 10, 20]"
+                [globalFilterFields]="['name', 'application.name', 'application.phone_number', 'phone_number']" #dt2>
+                <ng-template pTemplate="caption">
+                    <p-iconField iconPosition="left" class="ml-auto">
+                        <p-inputIcon style="position: relative;top: -3px; left: 4px;">
+                            <i class="fas fa-search"></i>
+                        </p-inputIcon>
+                        <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search in Applications" style="border-radius: 70px; height: 45px;" />
+                    </p-iconField>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+                        <th style="width: 10rem">ID</th>
+                        <th pSortableColumn="name" style="min-width: 200px">Name <p-sortIcon field="name" /></th>
+                        <th pSortableColumn="score" style="min-width: 100px">Score <p-sortIcon field="score" /></th>
+
+                        <th pSortableColumn="remindes" style="min-width: 200px">Remindes<p-sortIcon
+                                field="remindes" />
+                        </th>
+
+
+                        <th pSortableColumn="status" style="min-width: 200px">Status <p-sortIcon field="status" /></th>
+                        <th pSortableColumn="phone_number" style="min-width: 200px">Phone number <p-sortIcon
+                                field="phone_number" /></th>
+                        <th pSortableColumn="soi" style="min-width: 300px">School Of Interest <p-sortIcon field="soi" />
+                        </th>
+                        <th pSortableColumn="poi" style="min-width: 300px">Program Of Interest<p-sortIcon field="poi" />
+                        </th>
+                        <th pSortableColumn="intakeM" style="min-width: 150px">Intake Month<p-sortIcon
+                                field="intakeM" /></th>
+                        <th pSortableColumn="intakeY" style="min-width: 150px">Intake Year<p-sortIcon field="intakeY" />
+                        </th>
+                        <th pSortableColumn="nationality" style="min-width: 150px">Nationality <p-sortIcon
+                                field="nationality" /></th>
+                        <th pSortableColumn="email_address" style="min-width: 300px">Email Address <p-sortIcon
+                                field="email_address" /></th>
+                        <th pSortableColumn="representative" style="min-width: 200px">Representative <p-sortIcon
+                                field="representative" /></th>
+                        <th pSortableColumn="source" style="min-width: 300px">Source <p-sortIcon field="source" /></th>
+                        <th pSortableColumn="previousSchool" style="min-width: 300px">Previous School <p-sortIcon
+                                field="previousSchool" /></th>
+                        <th pSortableColumn="doc" style="min-width: 150px">Date Of Created <p-sortIcon
+                                field="previousSchool" /></th>
+
+                        <th style="width: 8rem;"></th>
+
+
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-application let-editing="editing" let-rowIndex="rowIndex">
+                    <tr>
+                        <td style="width: 4rem">
+                            <p-tableCheckbox [value]="application" />
+                        </td>
+                        <td>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="application.id" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ application.id }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.name" pEditableColumnField="name">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="application.name" required />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ application.name }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.score" pEditableColumnField="score">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="scores" appendTo="body" [(ngModel)]="application.score"
+                                        [style]="{ width: '100%' }"></p-dropdown>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="d-flex justify-content-center">
+                                        <p-badge [styleClass]="getScoreColor(application.score)"
+                                            [value]="application.score"></p-badge>
+                                    </div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+
+                        <td pEditableColumn [pEditableColumnField]="'remindes'"
+                            [pEditableColumnRowIndex]="rowIndex">
+                            <div class="progress-container position-relative">
+                                <span class="reminder_bar" *ngIf="application.reminder != undefined">
+                                    {{ application.reminder > 25 ? "25+ days" : application.reminder === 1 ?
+                                    application.reminder + "
+                                    day": application.reminder + " days"
+                                    }}</span>
+                                <p-progressBar [ngClass]="getProgressColor(application.reminder)"
+                                    [value]="setProgressValue(application.reminder)"
+                                    [showValue]="false"></p-progressBar>
+                            </div>
+                        </td>
+
+                        <td>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="applicationStatus" appendTo="body" [(ngModel)]="application.status"
+                                    [style]="{ width: '100%' }"></p-dropdown>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="status_styles"
+                                        [class.sent_to_school]="application.status == 'Sent to school'"
+                                        [class.interview_preparation]="application.status == 'Interview preparation'"
+                                        [class.accepted]="application.status == 'Accepted'"
+                                        [class.alternance_found]="application.status == 'Alternance found'"
+                                        [class.deposi_paid]="application.status == 'Deposit paid'"
+                                        [class.visa_ok]="application.status == 'Visa ok'"
+                                        [class.visa_ok_Alternance]="application.status == 'Visa ok + Alternance'"
+                                        [class.visa_rejected]="application.status == 'Visa rejected'"
+                                        [class.rejected]="application.status == 'Rejected'"
+                                        [class.canceled]="application.status == 'Canceled'"
+                                        >
+                                        {{ application.status }}
+                                    </div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.phone_number" pEditableColumnField="phone_number">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="application.phone_number" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ application.phone_number }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.soi" pEditableColumnField="soi">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-multiSelect [options]="soi" display="chip" placeholder="Select sources"
+                                        [(ngModel)]="application.soi" [style]="{ width: '100%' }"
+                                        appendTo="body"></p-multiSelect>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="selected_select">{{ application.soi }}</div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.poi" pEditableColumnField="poi">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-multiSelect [options]="poi" display="chip" placeholder="Select sources"
+                                        [(ngModel)]="application.poi" [style]="{ width: '100%' }"
+                                        appendTo="body"></p-multiSelect>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="selected_select">{{ application.poi }}</div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td [pEditableColumn]="application.intakeM" pEditableColumnField="intakeM">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="intakeM" appendTo="body" [(ngModel)]="application.intakeM"
+                                        [style]="{ width: '100%' }"></p-dropdown>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{application.intakeM}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.intakeY" pEditableColumnField="intakeY">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="intakeY" appendTo="body" [(ngModel)]="application.intakeY"
+                                        [style]="{ width: '100%' }"></p-dropdown>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{application.intakeY}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.nationality" pEditableColumnField="nationality">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="application.nationality" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ application.nationality }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.email_address" pEditableColumnField="email_address">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="application.email_address" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ application.email_address }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td [pEditableColumn]="application.representative" pEditableColumnField="representative">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="application.representative" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ application.representative }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td [pEditableColumn]="application.source" pEditableColumnField="source">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-multiSelect [options]="sources" display="chip" placeholder="Select sources"
+                                        [(ngModel)]="application.source" [style]="{ width: '100%' }"
+                                        appendTo="body"></p-multiSelect>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="selected_select">{{ application.source }}</div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td [pEditableColumn]="application.previousSchool" pEditableColumnField="previousSchool">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="previousSchool" appendTo="body"
+                                        [(ngModel)]="application.previousSchool" [style]="{ width: '100%' }"></p-dropdown>
+
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ application.previousSchool }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="application.doc" pEditableColumnField="doc">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="application.doc" required />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ application.doc }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td>
+                            <button mat-button [matMenuTriggerFor]="menu" icon="pi pi-ellipsis-v">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="openModal(viewStudent, 'main-modal', 'lg', [])">
+                                    <i class="far fa-eye"></i>
+                                    <span>View</span>
+                                </button>
+                                <ng-template #viewStudent let-d="dismiss">
+                                    <app-student-data   [leadName]="application.name" 
+                                                        [studentEmail]="application.email_address" 
+                                                        [PhoneNumber]="application.phone_number" 
+                                                        [nationality]="application.nationality" 
+                                                        [representative]="application.representative"
+                                                        [source]="application.source"
+                                                        [previousSchool]="application.previousSchool"
+                                                        [soi]="application.soi"
+                                                        [foi]="application.foi"
+                                                        [intakeM]="application.intakeM"
+                                                        [intakeY]="application.intakeY"
+                                                        >
+                                        </app-student-data>
+                                </ng-template>
+
+                                <button mat-menu-item (click)="openModal(StudentDocuments, 'main-modal', 'lg', [])">
+                                    <i class="far fa-file-pdf"></i>
+                                    <span>Documents</span>
+                                </button>
+                                <ng-template #StudentDocuments let-d="dismiss">Documents</ng-template>
+
+                                <button mat-menu-item (click)="openModal(comments, 'main-modal', 'lg', application.email)">
+                                    <i class="far fa-comment-dots"></i>
+                                    <span>Comments</span>
+                                </button>
+                                <ng-template #comments let-d="dismiss">
+                                    <form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit(commentForm)"
+                                        class="comment_form">
+                                        <h4>Comments of <span> {{application.name}} </span></h4>
+                                        <textarea formControlName="comment" placeholder="Your Comment"></textarea>
+                                        <p class="validation_msg"
+                                            *ngIf="commentForm.get('comment')?.hasError('required') && commentForm.get('comment')?.touched">
+                                            Comment is required.</p>
+                                        <h5>Emp Name <span>10:40</span></h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button>Send</button>
+                                        </div>
+                                    </form>
+                                </ng-template>
+
+
+                                <button mat-menu-item (click)="openModal(suggestProgram, 'main-modal', 'lg', application.email)">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Suggest program</span>
+                                </button>
+                                <ng-template #suggestProgram let-d="dismiss">
+                                    Suggest program
+                                </ng-template>
+                                <button mat-menu-item (click)="openModal(addTask, 'main-modal', 'lg', application.email)">
+                                    <i class="far fa-edit"></i>
+                                    <span>add task</span>
+                                </button>
+                                <ng-template #addTask let-d="dismiss">
+                                    add task
+                                </ng-template>
+
+                                
+
+                                
+                              
+
+                                <button mat-menu-item
+                                    (click)="openModal(archiveView, 'main-modal', 'lg',  application.email_address)">
+                                    <i class="far fa-trash-alt"></i>
+                                    <span>Archive</span>
+                                </button>
+                                <ng-template #archiveView let-d="dismiss">
+                                    <form [formGroup]="archiveCommentForm"
+                                        (ngSubmit)="onArchiveCommentSubmit(archiveCommentForm)" class="comment_form">
+                                        <h4>Archive Comment</h4>
+                                        <textarea formControlName="archiveComment"
+                                            placeholder="Your Archive Comment"></textarea>
+                                        <p class="validation_msg"
+                                            *ngIf="archiveCommentForm.get('archiveComment')?.hasError('required') && archiveCommentForm.get('archiveComment')?.touched">
+                                            Archive Comment is required.</p>
+                                        <h5>Emp Name <span>10:40</span></h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button>Send</button>
+                                        </div>
+                                    </form>
+                                </ng-template>
+
+                           
+                                
+
+                            </mat-menu>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <div class="grid_view" *ngIf="displayGridView">
+            <app-prospect-grid [firstContact]="firstContactList" [checkingProgram]="checkingProgramList" [preparingDocs]="preparingDocsList" [sentToProspect]="[]"></app-prospect-grid>
+        </div>
+    </div>
+

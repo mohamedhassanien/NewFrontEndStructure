@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CheckboxModule } from 'primeng/checkbox';
 import {MatDividerModule} from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 interface SelectItem {
@@ -26,46 +27,58 @@ interface SelectItem {
     MatInputModule,
     CheckboxModule,
     MatDividerModule,
-    CommonModule
+    CommonModule,
+   
   ],
   templateUrl: './add-lead.component.html',
   styleUrl: './add-lead.component.scss'
 })
-export class AddLeadComponent {
+export class AddLeadComponent implements OnInit {
 selectedTabIndex = 0;
-//-------Score Variables------------
-isRadio1Checked = false;
-isDiv1Visible = false;
+selectedLeadType:string = '0';
+selectedOption:string = '';
+constructor(private _ModalService: NgbModal){
+  
+}
+ngOnInit(): void {
 
-isRadio2Checked = false;
-isDiv2Visible = false;
-
-// Handles the button click (also triggered by the radio button)
-onButton1Click() {
-  // Toggle the radio button's checked state
-  this.isRadio1Checked = !this.isRadio1Checked;
-  // Display the div only if the radio button is checked
-  this.isDiv1Visible = this.isRadio1Checked;
 }
 
-onButton2Click() {
-  // Toggle the radio button's checked state
-  this.isRadio2Checked = !this.isRadio2Checked;
-  // Display the div only if the radio button is checked
-  this.isDiv2Visible = this.isRadio2Checked;
-}
+//------------------------------------------------Score Variables----------------------------------------------------------------
 
-// When the radio button is clicked, prevent default action and trigger button click
-onRadio1Click(event: Event) {
-  event.stopPropagation(); // Prevent the default radio button behavior
-  this.onButton1Click();     // Trigger the button click logic
-}
-onRadio2Click(event: Event) {
-  event.stopPropagation(); // Prevent the default radio button behavior
-  this.onButton2Click();     // Trigger the button click logic
-}
+//------------------------ current-status radio buttons --------------------------------------------------------
+selectedButton: number | null = null;
 
-//----------------- New tag tab lists --------------------
+  // Handles button click and selects the corresponding button
+  onButtonClick(buttonNumber: number) {
+    this.selectedButton = buttonNumber; // Set the selected button
+  }
+
+  // Handles radio button click, which triggers the button logic
+  onRadioClick(event: Event, buttonNumber: number) {
+    event.stopPropagation(); // Prevent default radio button behavior
+    this.onButtonClick(buttonNumber); // Trigger the same logic as the button click
+  }
+  //-------------------------------- checkboxes functionalities -------------------------------------------------
+  selectedCheckboxBtn:number|null=null;
+  onCheckboxBtnClick(buttonNumber:number){
+    this.selectedCheckboxBtn = buttonNumber;
+  }
+  onCheckboxClick(event:Event,buttonNumber:number){
+    event.stopPropagation();
+    this.onCheckboxBtnClick(buttonNumber)
+  }
+  //----------------------------------- test checkboxes functionalities -----------------------------------------
+  selectedTest :string = '';
+  onTestBtnClick(testName:string){
+    this.selectedTest = testName;
+  }
+  onTestClick(event:Event,testName:string){
+    event.stopPropagation();
+    this.onTestBtnClick(testName);
+  }
+
+//-------------------------------------------------------- New tag tab lists --------------------------------------------------
 
 sources: SelectItem[] = [
  { value:'Direct Message META', viewValue:'Direct Message META'},
@@ -105,9 +118,15 @@ fieldOfInterest:SelectItem[] =[
  {value:"Other",viewValue:"Other"},
 ];
 
+options = [
+  { label: 'Select an option',value: ''},
+  { label:'English',value:'English'},
+  { label:"French",value:"French"}
+];
+
 
   goToNextTab(){
-   if(this.selectedTabIndex < 2){
+   if(this.selectedTabIndex < 3){
     this.selectedTabIndex +=1;
    }
   }
@@ -117,9 +136,14 @@ fieldOfInterest:SelectItem[] =[
       this.selectedTabIndex -=1;
     }
    }
-
-  
-   
+   onOptionChange(event:Event){
+      const  selectedElement = event.target as HTMLSelectElement;
+      this.selectedOption = selectedElement.value
+   }
+   closeModal(){
+    this._ModalService.dismissAll()
+   }
+ 
 }
 
 

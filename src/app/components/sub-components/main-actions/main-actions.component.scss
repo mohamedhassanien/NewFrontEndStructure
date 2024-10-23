@@ -1,6 +1,6 @@
 @import '../../../../default.scss';
 
-.add_btn{
+.add_btn {
     background-color: $State-Color-1;
     color: $white-color;
     border-radius: $Radius;
@@ -8,16 +8,23 @@
     padding: 9px 25px;
     font-size: $font-16;
     box-shadow: $btn-shadow;
+    transition: $transition2;
 
-    svg{
+    svg {
         margin-right: 5px;
     }
+
+    &:hover{
+        background-color: $State-Color-2;
+        transition: $transition2;
+    }
 }
-.component_search{
+
+.component_search {
     position: relative;
     margin-right: 15px;
 
-    input{
+    input {
         background-color: $white-color;
         border-radius: 70px;
         border: 1px solid $State-Color-1;
@@ -27,7 +34,8 @@
         padding-right: 15px;
         padding-left: 40px;
     }
-    svg{
+
+    svg {
         position: absolute;
         top: 13px;
         left: 14px;
@@ -36,7 +44,9 @@
     }
 }
 
-.download_btn, .line_btn, .grid_btn{
+.download_btn,
+.line_btn,
+.grid_btn {
     width: 45px;
     height: 45px;
     background-color: $State-Color-1;
@@ -48,5 +58,13 @@
     margin-right: 15px;
     font-size: 20px;
     box-shadow: $btn-shadow;
+    cursor: pointer;
+    transition: $transition2;
+
+    &:hover {
+        background-color: $State-Color-2;
+        transition: $transition2;
+    }
 
 }
+

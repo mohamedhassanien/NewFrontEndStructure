@@ -4,7 +4,7 @@
 
 body {
     background-color: $bg-color;
-    color: $min-text;
+    color: $main-text;
 }
 
 ul {
@@ -50,7 +50,7 @@ html {
     background-color: $white-color;
 
     .mdc-button__label {
-        color: $min-text;
+        color: $main-text;
     }
 
     .mat-mdc-menu-item {
@@ -113,7 +113,7 @@ html {
     top: -22px;
     right: 0;
     font-size: 12px;
-    color: $min-text !important
+    color: $main-text !important
 }
 
 .p-badge {
@@ -143,6 +143,38 @@ html {
         .modal-content {
             padding: 20px;
         }
+    }
+}
+
+.validation_msg {
+    padding: 0;
+    color: $red-color;
+    font-size: 14px;
+}
+
+.activeGrid {
+    .grid_btn {
+        background-color: $State-Color-2 !important;
+    }
+}
+
+.activeList {
+    .line_btn {
+        background-color: $State-Color-2 !important;
+    }
+}
+
+.mat-mdc-button:not(:disabled) {
+    color: $gray !important;
+    top: -16px;
+    right: -10px;
+}
+
+table {
+    .mat-mdc-button:not(:disabled) {
+        color: $gray !important;
+        top: 0px;
+        right: 0px;
     }
 }
 

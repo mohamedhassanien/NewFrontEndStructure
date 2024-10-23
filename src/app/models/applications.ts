@@ -1,0 +1,22 @@
+export interface Applications {
+    id?: number,
+    nationality?: string,
+    name?: string,
+    emp?: string,
+    representative?: string,
+    score?: number,
+    status?: string,
+    phone_number?: number,
+    email_address?: string,
+    soi?: [],
+    poi?: [],
+    foi?: [],
+    accountCreation?: number,
+    source?: [],
+    previousSchool?: string,
+    intakeM?: string,
+    intakeY?: number,
+    tags?: [],
+    reminder?: number,
+    doc?: string
+}

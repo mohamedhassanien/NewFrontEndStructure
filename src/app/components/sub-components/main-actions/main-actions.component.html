@@ -5,15 +5,16 @@
     </button>
     <div class="component_search">
         <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search for lead">
+        <input type="text" placeholder="Search">
     </div>
     <div class="download_btn">
         <i class="fas fa-download"></i>
     </div>
-    <div class="line_btn">
-        <i class="fas fa-list-ul"></i>
-    </div>
-    <div class="grid_btn">
+    <div class="grid_btn" (click)="gridView()">
         <i class="fas fa-th-large"></i>
     </div>
+    <div class="line_btn" (click)="listView()">
+        <i class="fas fa-list-ul"></i>
+    </div>
+    
 </div>

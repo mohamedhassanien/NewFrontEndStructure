@@ -1,0 +1,198 @@
+@import '../../../../default.scss';
+
+.grid_container {
+    width: 400px;
+    max-width: 100%;
+    margin: 0 25px 25px 0;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 40px;
+
+    h2 {
+        font-size: $font-16;
+        color: $main-text;
+        margin: 0;
+    }
+
+    .count {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        color: $white-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 25px;
+
+        &.InvitedataColor {
+            background-color: $State-Color-1;
+        }
+
+        &.accountCreatedColor {
+            background-color: $score-green;
+        }
+    }
+}
+
+
+
+.drag-box {
+    padding: 20px 10px;
+    cursor: move;
+    background: white;
+    font-size: $font-14;
+
+    box-shadow: 4px 4px 18px 0px #E7E4E8CC;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    .card_actions {
+        height: 10px;
+    }
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.drag-box:last-child {
+    border: none;
+}
+
+.grid_list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.grid_list {
+    margin-top: 12px;
+    height: calc(100vh - 330px);
+    background-color: $drag-bg;
+    position: relative;
+
+    overflow-y: scroll;
+}
+
+.drag_con {
+
+    padding: 10px;
+    border-radius: 10px;
+
+
+}
+
+.card_name {
+    font-size: $font-14;
+    color: $main-text;
+}
+
+.card_nationality {
+    font-size: $font-12;
+    color: $drag-gray-color;
+    margin-top: 5px;
+}
+
+.score_emp {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .card_score {
+        background-color: $score-green;
+        color: $white-color;
+        padding: 5px 15px;
+        border-radius: 10px;
+        font-size: $font-12;
+        display: inline-block;
+    }
+
+    .emp_name {
+        color: $drag-gray-color;
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+}
+
+.send_to_prospect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h4 {
+        font-size: $font-14;
+    }
+}
+
+.sentToTitle {
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.sendTo {
+    .drag_con {
+        .cdk-drag {
+            display: none;
+        }
+    }
+
+    .prospect_con {
+
+
+        h4 {
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -100px;
+        }
+    }
+}
+
+.score_hight {
+    background-color: $score-green !important;
+}
+
+.score_low {
+    background-color: $red-color !important;
+}
+
+.score_yellow {
+    background-color: $State-Color-4 !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #D9D9D9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #7F6ECC;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
