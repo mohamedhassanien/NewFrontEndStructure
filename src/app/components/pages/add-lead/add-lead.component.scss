@@ -9,6 +9,10 @@
     line-height: 24px;
     
   }
+  .btn-close{
+    top: 20px;
+    right: 12px;
+  }
   .radio-toolbar {
     background-color: #7F6ECC;
     color: white;
@@ -124,7 +128,7 @@
    
 
    .graduated{
-    h4{
+    h4,.test-score{
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
