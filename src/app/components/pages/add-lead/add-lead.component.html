@@ -152,14 +152,14 @@
                 <h3 class="text-black mb-4">What is your current status?</h3>
                 <div class="row mb-4">
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick()">
-                            <input type="radio" class="me-2" name="current_status" [checked]="isRadioChecked" (click)="onRadioClick($event)" >
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButton1Click()">
+                            <input type="radio" class="me-2" name="current_status" [checked]="isRadio1Checked" (click)="onRadio1Click($event)" >
                             <label for="highSchool">I am in High School </label>
                         </button>
                     </div>
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
-                            <input type="radio" class="me-2" name="current_status">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButton2Click()">
+                            <input type="radio" class="me-2" name="current_status" [checked]="isRadio2Checked" (click)="onRadio2Click($event)" >
                             <label for="">I am in university </label>
                         </button>
                     </div>
@@ -170,18 +170,52 @@
                         </button>
                     </div>
                 </div>
-                <div  *ngIf="isDivVisible" class="mb-4">
+                <div  *ngIf="isDiv1Visible" class="mb-4">
                     <div class="row">
                        <div class="col-3">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
+                        <button class="checkbox-btn px-3 py-1 rounded-2 d-flex justify-content-between align-items-center">
                             <input type="checkbox" class="me-2" name="current_status">
                             <label for="">First Year </label>
                         </button>
                        </div>
                        <div class="col-3">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center">
+                        <button class="checkbox-btn px-3 py-1 rounded-2 d-flex justify-content-between align-items-center">
                             <input type="checkbox" class="me-2" name="current_status">
                             <label for="">12th Grade </label>
+                        </button>
+                       </div>
+                    </div>
+                </div>
+                <div  *ngIf="isDiv2Visible" class="mb-4">
+                    <div class="row-cols-5 d-flex justify-content-evenly">
+                       <div class="col">
+                        <button class="checkbox-btn px-3 py-1 rounded-2 d-flex justify-content-between align-items-center">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">First Year </label>
+                        </button>
+                       </div>
+                       <div class="col">
+                        <button class="checkbox-btn px-3 py-1 rounded-2 d-flex justify-content-between align-items-center">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">Second Year </label>
+                        </button>
+                       </div>
+                       <div class="col">
+                        <button class="checkbox-btn px-3 py-1 rounded-2 d-flex justify-content-between align-items-center">
+                            <input type="checkbox" name="current_status">
+                            <label for="">Third Year </label>
+                        </button>
+                       </div>
+                       <div class="col">
+                        <button class="checkbox-btn px-3 py-1 rounded-2 d-flex justify-content-between align-items-center">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">Fourth Year </label>
+                        </button>
+                       </div>
+                       <div class="col">
+                        <button class="checkbox-btn px-3 py-1 rounded-2 d-flex justify-content-between align-items-center">
+                            <input type="checkbox" class="me-2" name="current_status">
+                            <label for="">Above</label>
                         </button>
                        </div>
                     </div>

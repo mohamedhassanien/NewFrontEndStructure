@@ -34,23 +34,35 @@ interface SelectItem {
 export class AddLeadComponent {
 selectedTabIndex = 0;
 //-------Score Variables------------
-highSchool:boolean = false;
-isRadioChecked = false;
-isDivVisible = false;
+isRadio1Checked = false;
+isDiv1Visible = false;
+
+isRadio2Checked = false;
+isDiv2Visible = false;
 
 // Handles the button click (also triggered by the radio button)
-onButtonClick() {
+onButton1Click() {
   // Toggle the radio button's checked state
-  this.isRadioChecked = !this.isRadioChecked;
-
+  this.isRadio1Checked = !this.isRadio1Checked;
   // Display the div only if the radio button is checked
-  this.isDivVisible = this.isRadioChecked;
+  this.isDiv1Visible = this.isRadio1Checked;
+}
+
+onButton2Click() {
+  // Toggle the radio button's checked state
+  this.isRadio2Checked = !this.isRadio2Checked;
+  // Display the div only if the radio button is checked
+  this.isDiv2Visible = this.isRadio2Checked;
 }
 
 // When the radio button is clicked, prevent default action and trigger button click
-onRadioClick(event: Event) {
+onRadio1Click(event: Event) {
   event.stopPropagation(); // Prevent the default radio button behavior
-  this.onButtonClick();     // Trigger the button click logic
+  this.onButton1Click();     // Trigger the button click logic
+}
+onRadio2Click(event: Event) {
+  event.stopPropagation(); // Prevent the default radio button behavior
+  this.onButton2Click();     // Trigger the button click logic
 }
 
 //----------------- New tag tab lists --------------------
