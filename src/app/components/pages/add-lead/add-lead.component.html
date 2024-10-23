@@ -247,35 +247,35 @@
                 <div *ngIf="selectedOption === 'English'" class="mb-4 mt-3 graduated mx-2">
                     <h4 class="mb-3">Do you have an English language proficiency test?</h4>
                     <div class="d-flex justify-content-between mb-3">
-                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onCheckboxBtnClick(1)">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" [class.checked-btn]="selectedCheckboxBtn === 1" (click)="onCheckboxBtnClick(1)">
                             <input id="yes" type="checkbox" class="me-2" [checked]="selectedCheckboxBtn === 1" (click)="onCheckboxClick($event,1)" name="proficiency-test">
                             <label for="yes">Yes,I have.</label>
                         </button>
-                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
-                            <input id="maybe" type="checkbox" class="me-2" name="proficiency-test">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" [class.checked-btn]="selectedCheckboxBtn === 2" (click)="onCheckboxBtnClick(2)">
+                            <input id="maybe" type="checkbox" class="me-2" [checked]="selectedCheckboxBtn === 2" (click)="onCheckboxClick($event,2)" name="proficiency-test">
                             <label for="maybe">I am planning to take one.</label>
                         </button>
-                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
-                            <input id="no" type="checkbox" class="me-2" name="proficiency-test">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" [class.checked-btn]="selectedCheckboxBtn === 3" (click)="onCheckboxBtnClick(3)">
+                            <input id="no" type="checkbox" class="me-2" [checked]="selectedCheckboxBtn === 3" (click)="onCheckboxClick($event,3)" name="proficiency-test">
                             <label for="no">I do not have a test.</label>
                         </button> 
                     </div>
                        <div class="testYes" *ngIf="selectedCheckboxBtn === 1">
                         <h4 class="mb-3">Which test did you take?</h4>
                         <div class="d-flex justify-content-between mb-4">
-                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('ILETS')">
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('ILETS')" [class.checked-btn]="selectedTest === 'ILETS'">
                                 <input id="ILETS" type="checkbox" [checked]="selectedTest === 'ILETS'" (click)="onTestClick($event,'ILETS')" class="me-2" name="english-test">
                                 <label for="ILETS">ILETS</label>
                             </button>
-                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('TOEFL')">
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('TOEFL')" [class.checked-btn]="selectedTest === 'TOEFL'">
                                 <input id="TOEFL" type="checkbox"  [checked]="selectedTest === 'TOEFL'" (click)="onTestClick($event,'TOEFL')" class="me-2" name="english-test">
                                 <label for="TOEFL">TOEFL</label>
                             </button>
-                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('Duolingo')">
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('Duolingo')" [class.checked-btn]="selectedTest === 'Duolingo'">
                                 <input id="Duolingo" type="checkbox"  [checked]="selectedTest === 'Duolingo'" (click)="onTestClick($event,'Duolingo')" class="me-2" name="english-test">
                                 <label for="Duolingo">Duolingo</label>
                             </button>
-                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('Easy speaking')">
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('Easy speaking')" [class.checked-btn]="selectedTest === 'Easy speaking'">
                                 <input id="easy-speaking" type="checkbox"  [checked]="selectedTest === 'Easy speaking'" (click)="onTestClick($event,'Easy speaking')" class="me-2" name="english-test">
                                 <label for="easy-speaking">Easy speaking</label>
                             </button>
