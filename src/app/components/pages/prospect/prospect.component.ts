@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { MainActionsComponent } from "../../layout/main-actions/main-actions.component";
-import { MainFilterComponent } from "../../layout/main-filter/main-filter.component";
+import { MainActionsComponent } from "../../sub-components/main-actions/main-actions.component";
+import { MainFilterComponent } from "../../sub-components/main-filter/main-filter.component";
 
 import { Prospect } from '../../../models/prospect';
 import { ProspectService } from '../../../services/components/prospect.service';
@@ -25,9 +25,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { StudentDataComponent } from "../../layout/student-data/student-data.component";
+import { StudentDataComponent } from "../../sub-components/student-data/student-data.component";
 import { AddLeadComponent } from "../add-lead/add-lead.component";
-import { LeadsGridComponent } from "../leads-grid/leads-grid.component";
+import { ProspectGridComponent } from "../prospect-grid/prospect-grid.component";
 
 @Component({
   selector: 'app-prospect',
@@ -51,7 +51,7 @@ import { LeadsGridComponent } from "../leads-grid/leads-grid.component";
     InputTextModule,
     MatTabsModule,
     AddLeadComponent,
-    LeadsGridComponent],
+    ProspectGridComponent],
   templateUrl: './prospect.component.html',
   styleUrl: './prospect.component.scss',
   providers: [ProspectService]
@@ -72,8 +72,10 @@ export class ProspectComponent {
 
   displayListView = true;
   displayGridView = false;
-  inviteData: any;
-  accountCreatedList: any;
+  checkingProgramList: any;
+  firstContactList: any;
+  preparingDocsList: any;
+
 
   employees: any[] = [{
     name: "Ali",
@@ -148,13 +150,18 @@ export class ProspectComponent {
 
   ngOnInit() {
     this.prospectService.getProductsMini().then((data: any) => {
-
       this.prospect = data;
-      const invitedData = data.filter((val: any) => val.status === "Invited lead");
-      this.inviteData = invitedData;
 
-      const accountData = data.filter((val: any) => val.status === "Account Created");
-      this.accountCreatedList = accountData;
+      const firstContactData = data.filter((val: any) => val.status === "First contact");
+      this.firstContactList = firstContactData;
+
+      const checkingProgramData = data.filter((val: any) => val.status === "Checking program");
+      this.checkingProgramList = checkingProgramData;
+
+      const preparingDocsData = data.filter((val: any) => val.status === "Preparing docs");
+      this.preparingDocsList = preparingDocsData;
+
+
     });
     this.commentForm = new FormGroup({
       comment: new FormControl('', [Validators.required, Validators.email]),

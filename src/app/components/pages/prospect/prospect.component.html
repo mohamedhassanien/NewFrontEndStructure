@@ -126,10 +126,10 @@
                                 </ng-template>
                                 <ng-template pTemplate="output">
                                     <div class="status_styles"
-                                        [class.invited_lead]="prospect.status == 'Invited prospect'"
-                                        [class.invited_lead]="prospect.status == 'Invited lead'"
-                                        [class.docs_uploaded]="prospect.status == 'Docs uploaded'"
-                                        [class.account_created]="prospect.status == 'Account Created'">
+                                        [class.first_contact]="prospect.status == 'First contact'"
+                                        [class.preparing_docs]="prospect.status == 'Preparing docs'"
+                                        [class.checking_program]="prospect.status == 'Checking program'"
+                                        >
                                         {{ prospect.status }}
                                     </div>
                                 </ng-template>
@@ -363,9 +363,7 @@
         </div>
 
         <div class="grid_view" *ngIf="displayGridView">
-
-            <app-leads-grid [AccountData]="accountCreatedList" [Invitedata]="inviteData"
-                [sentToProspect]="[]"></app-leads-grid>
+            <app-prospect-grid [firstContact]="firstContactList" [checkingProgram]="checkingProgramList" [preparingDocs]="preparingDocsList" [sentToProspect]="[]"></app-prospect-grid>
         </div>
     </div>
 </div>

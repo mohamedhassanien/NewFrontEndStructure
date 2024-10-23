@@ -9,6 +9,7 @@ import { ResetPasswordComponent } from './components/auth/reset-password/reset-p
 import { VerfiyComponent } from './components/auth/verfiy/verfiy.component';
 import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
 import { LeadsComponent } from './components/pages/leads/leads.component';
+import { ApplicationComponent } from './components/pages/application/application.component';
 
 export const routes: Routes = [
     {
@@ -53,6 +54,11 @@ export const routes: Routes = [
             {
                 path: 'prospect',
                 component: ProspectComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path: 'applications',
+                component: ApplicationComponent,
                 canActivate:[authGuard]
             }
         ]

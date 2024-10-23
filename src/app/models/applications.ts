@@ -1,4 +1,4 @@
-export interface Prospect {
+export interface Applications {
     id?: number,
     nationality?: string,
     name?: string,

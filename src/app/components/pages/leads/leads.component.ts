@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { MainActionsComponent } from "../../layout/main-actions/main-actions.component";
-import { MainFilterComponent } from "../../layout/main-filter/main-filter.component";
+import { MainActionsComponent } from "../../sub-components/main-actions/main-actions.component";
+import { MainFilterComponent } from "../../sub-components/main-filter/main-filter.component";
 
 import { Leads } from '../../../models/leads';
 import { LeadsService } from '../../../services/components/leads.service';
@@ -25,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { StudentDataComponent } from "../../layout/student-data/student-data.component";
+import { StudentDataComponent } from "../../sub-components/student-data/student-data.component";
 import { AddLeadComponent } from "../add-lead/add-lead.component";
 import { LeadsGridComponent } from "../leads-grid/leads-grid.component";
 

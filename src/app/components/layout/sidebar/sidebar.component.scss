@@ -20,7 +20,7 @@ nav {
                 height: 55px;
                 padding-left: 15px;
                 text-decoration: none;
-                color: $min-text;
+                color: $main-text;
 
                 &.active_link {
                     background-color: $State-Color-1;
@@ -29,7 +29,6 @@ nav {
                     color: #fff;
                     box-shadow: 0px 3px 20px 0px $shadow;
                     box-shadow: $btn-shadow
-
                 }
 
                 svg {
