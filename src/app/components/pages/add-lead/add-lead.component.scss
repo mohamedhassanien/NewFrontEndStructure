@@ -9,15 +9,43 @@
     line-height: 24px;
     
   }
+  .radio-toolbar {
+    background-color: #7F6ECC;
+    color: white;
+    padding: 0;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    input[type="radio"] {
+      display: none;
+    }
+    input[type="radio"]:checked+label {
+      background-color: #EAD799;
+      font-weight: bold;
+      color: black;
+      width: 50%;
+      border-radius: 25px; 
+      text-align: center;
+    }
+
+    label {
+      display: inline-block;
+      font-family: Arial;
+      font-size: 16px;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px 13px;
+      border-radius: 10px;
+      width: 50%;
+    }
+  }
+ 
 
     mat-tab-group{
-
-     
-
-
       mat-tab{
         border-bottom: 2px solid $State-Color-1 !important;
-  
       }
       
     }
@@ -29,17 +57,14 @@
     }
    }
    
-  
     form{
       overflow-x: hidden !important;
-  
       .input-caption{
         border: 1px solid $border-color;
         box-shadow: $border-shadow;
         width:100% !important;
         input{
             box-sizing: border-box;
-          
         }
         input::placeholder{
             color: #9A9A9A;
@@ -63,8 +88,7 @@
             left: 30px;
             color: $State-Color-1;
             background-color: white;
-            font-weight:600;
-            
+            font-weight:600;   
         }
         select{
           color: #898989;
@@ -73,8 +97,6 @@
            outline:none;
 
         }
-        
-  
       }
      
     }
@@ -82,8 +104,30 @@
    .divider-color{
     border-top-color: #F5F4F4;
    }
+   .bg-lightgrey{
+    background-color:#F5F7FA;
+   }
+   .clicked{
+    background-color: #6F77F4;
+    color: white;
+    input[type="radio"]{
+      accent-color: white;
+      width: 15px;
+      height: 15px;
+    }
+   }
+ 
    .check-btn{
     background-color: transparent;
     border: 1px solid #F5F4F4;
    }
    
+
+   .graduated{
+    h4{
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: #959595;
+    }
+   }

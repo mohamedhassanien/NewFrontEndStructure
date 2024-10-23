@@ -1,5 +1,13 @@
 <div class="container modal-con py-4 px-3">
-                                        
+  <div class="d-flex justify-content-center mb-4">
+    <div class="radio-toolbar text-center">
+        <input type="radio" id="radio1" name="leadType" value="0" [(ngModel)]="selectedLeadType"/>
+        <label for="radio1" [class.checked]="selectedLeadType === '0'">Direct Lead</label>
+      
+        <input type="radio" id="radio2" name="leadType" value="1" [(ngModel)]="selectedLeadType" />
+        <label for="radio2" [class.checked]="selectedLeadType === '1'">Future Lead</label>
+      </div> 
+  </div>                         
     <mat-tab-group [(selectedIndex)]="selectedTabIndex" [dynamicHeight]='true'>
         <mat-tab label="Main information" class="mainInfoTab">
         <h3 class="mt-3">Information</h3>  
@@ -152,19 +160,19 @@
                 <h3 class="text-black mb-4">What is your current status?</h3>
                 <div class="row mb-4">
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(1)">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center bg-lightgrey" (click)="onButtonClick(1)" [class.clicked]="selectedButton === 1">
                             <input type="radio" class="me-2" name="current_status" [checked]="selectedButton === 1" (click)="onRadioClick($event, 1)" >
                             <label for="highSchool">I am in High School </label>
                         </button>
                     </div>
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(2)">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center bg-lightgrey" (click)="onButtonClick(2)" [class.clicked]="selectedButton === 2">
                             <input type="radio" class="me-2" name="current_status"  [checked]="selectedButton === 2" (click)="onRadioClick($event, 2)">
                             <label for="">I am in university </label>
                         </button>
                     </div>
                     <div class="col-4">
-                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center" (click)="onButtonClick(3)">
+                        <button class="border-0 p-2 rounded-2 d-flex justify-content-between align-items-center bg-lightgrey" (click)="onButtonClick(3)" [class.clicked]="selectedButton === 3">
                             <input type="radio" class="me-2" name="current_status" [checked]="selectedButton === 3" (click)="onRadioClick($event, 3)">
                             <label for="">I have Graduated </label>
                         </button>
@@ -228,13 +236,51 @@
                </div>
                 <mat-divider class="divider-color"></mat-divider>
                 <h3 class="text-black mt-3 mb-4">Language test</h3>
-                <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
+                <div class="input-caption position-relative my-4 p-3 mb-1 rounded-5">
                     <label for="language-test" class="position-absolute px-2">Status</label>
-                    <select class="border-0 w-100 bg-white ps-2" id="language-test" single>
-                        <option value="English">English</option>
-                     </select>
+                    <select class="border-0 w-100 bg-white ps-2" id="language-test" (change)="onOptionChange($event)">
+                        <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+                      </select>
+                </div>
+                
+                <div *ngIf="selectedOption === 'English'" class="mb-4 mt-3 graduated">
+                    <h4 class="mb-3">Do you have an English language proficiency test?</h4>
+                    <div class="d-flex justify-content-between mb-3">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                            <input id="yes" type="checkbox" class="me-2" name="proficiency-test">
+                            <label for="yes">Yes,I have.</label>
+                        </button>
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                            <input id="maybe" type="checkbox" class="me-2" name="proficiency-test">
+                            <label for="maybe">I am planning to take one.</label>
+                        </button>
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                            <input id="no" type="checkbox" class="me-2" name="proficiency-test">
+                            <label for="no">I do not have a test.</label>
+                        </button> 
+                    </div>
+                    <h4 class="mb-3">Which test did you take?</h4>
+                        <div class="d-flex justify-content-between mb-4">
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                                <input id="ILETS" type="checkbox" class="me-2" name="english-test">
+                                <label for="ILETS">ILETS</label>
+                            </button>
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                                <input id="TOEFL" type="checkbox" class="me-2" name="english-test">
+                                <label for="TOEFL">TOEFL</label>
+                            </button>
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                                <input id="Duolingo" type="checkbox" class="me-2" name="english-test">
+                                <label for="Duolingo">Duolingo</label>
+                            </button>
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
+                                <input id="easy-speaking" type="checkbox" class="me-2" name="english-test">
+                                <label for="easy-speaking">Easy speaking</label>
+                            </button>
+                        </div>
                 </div>
             </form>
+            <button type="button" (click)="goToNextTab()" class="d-flex justify-content-end doneBtn border-0 mb-3 px-5 py-3 rounded-5 ms-auto">Next</button>
         </mat-tab>
         <mat-tab label="Language test">
             <h3 class="mt-3">Language test</h3>  

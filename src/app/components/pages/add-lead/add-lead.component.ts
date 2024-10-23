@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -26,14 +26,22 @@ interface SelectItem {
     MatInputModule,
     CheckboxModule,
     MatDividerModule,
-    CommonModule
+    CommonModule,
+   
   ],
   templateUrl: './add-lead.component.html',
   styleUrl: './add-lead.component.scss'
 })
-export class AddLeadComponent {
+export class AddLeadComponent implements OnInit {
 selectedTabIndex = 0;
-//-------Score Variables------------
+selectedLeadType:string = '0';
+selectedOption:string = '';
+
+ngOnInit(): void {
+
+}
+
+//------------------------------------------------Score Variables----------------------------------------------------------------
 selectedButton: number | null = null;
 
   // Handles button click and selects the corresponding button
@@ -47,7 +55,7 @@ selectedButton: number | null = null;
     this.onButtonClick(buttonNumber); // Trigger the same logic as the button click
   }
 
-//----------------- New tag tab lists --------------------
+//-------------------------------------------------------- New tag tab lists --------------------------------------------------
 
 sources: SelectItem[] = [
  { value:'Direct Message META', viewValue:'Direct Message META'},
@@ -87,9 +95,15 @@ fieldOfInterest:SelectItem[] =[
  {value:"Other",viewValue:"Other"},
 ];
 
+options = [
+  { label: 'Select an option',value: ''},
+  { label:'English',value:'English'},
+  { label:"French",value:"French"}
+];
+
 
   goToNextTab(){
-   if(this.selectedTabIndex < 2){
+   if(this.selectedTabIndex < 3){
     this.selectedTabIndex +=1;
    }
   }
@@ -99,9 +113,11 @@ fieldOfInterest:SelectItem[] =[
       this.selectedTabIndex -=1;
     }
    }
-
-  
-   
+   onOptionChange(event:Event){
+      const  selectedElement = event.target as HTMLSelectElement;
+      this.selectedOption = selectedElement.value
+   }
+ 
 }
 
 
