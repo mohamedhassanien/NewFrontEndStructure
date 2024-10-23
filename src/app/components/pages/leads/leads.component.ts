@@ -6,12 +6,9 @@ import { Router } from '@angular/router';
 import { MainActionsComponent } from "../../layout/main-actions/main-actions.component";
 import { MainFilterComponent } from "../../layout/main-filter/main-filter.component";
 
-
 import { Leads } from '../../../models/leads';
 import { LeadsService } from '../../../services/components/leads.service';
-import {MatTabsModule} from '@angular/material/tabs';
-
-
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { TableModule } from 'primeng/table';
 import { ProgressBarModule } from 'primeng/progressbar';
@@ -23,25 +20,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SelectItem } from 'primeng/api';
 
-
-
-
-
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-
-
-
-
-import {
-  SearchCountryField,
-  CountryISO
-} from "ngx-intl-tel-input";
 import { StudentDataComponent } from "../../layout/student-data/student-data.component";
 import { AddLeadComponent } from "../add-lead/add-lead.component";
+import { LeadsGridComponent } from "../../layout/leads-grid/leads-grid.component";
 
 @Component({
   selector: 'app-leads',
@@ -63,7 +49,9 @@ import { AddLeadComponent } from "../add-lead/add-lead.component";
     MultiSelectModule,
     StudentDataComponent,
     InputTextModule,
-    MatTabsModule, AddLeadComponent],
+    MatTabsModule, 
+    AddLeadComponent, 
+    LeadsGridComponent],
   templateUrl: './leads.component.html',
   styleUrl: './leads.component.scss',
   providers: [LeadsService]
@@ -73,11 +61,17 @@ export class LeadsComponent {
   btn_title = 'Add Lead'
   leads!: Leads[];
   scores: number[] = [1, 2, 3, 4, 5];
-  commentForm!:FormGroup;
-  archiveCommentForm!:FormGroup;
+  commentForm!: FormGroup;
+  archiveCommentForm!: FormGroup;
   editingRow: any = null;
   commentObj: any;
   archiveCommentObj: any;
+
+  displayListView = true;
+  displayGridView = false;
+  inviteData:any;
+  accountCreatedList:any;
+
   employees: any[] = [{
     name: "Ali",
   },
@@ -131,10 +125,10 @@ export class LeadsComponent {
     { label: 'Other', value: 'Other' },
   ];
   tags: SelectItem[] = [
-    {label: 'Data Science', value:'Data Science'},
-    {label: 'Computer Science', value:'Computer Science'},
-    {label: 'Informatique', value:'Informatique'},
-    {label: 'Cybersecurity', value:'Cybersecurity'}
+    { label: 'Data Science', value: 'Data Science' },
+    { label: 'Computer Science', value: 'Computer Science' },
+    { label: 'Informatique', value: 'Informatique' },
+    { label: 'Cybersecurity', value: 'Cybersecurity' }
   ]
   constructor(private leadsService: LeadsService, private _Router: Router, private _ModalService: NgbModal) {
 
@@ -142,14 +136,20 @@ export class LeadsComponent {
 
   ngOnInit() {
     this.leadsService.getProductsMini().then((data: any) => {
+
       this.leads = data;
+      const invitedData = data.filter((val:any) => val.status === "Invited lead");
+      this.inviteData = invitedData;
+
+      const accountData = data.filter((val:any) => val.status === "Account Created");
+      this.accountCreatedList = accountData;
     });
     this.commentForm = new FormGroup({
-      comment: new FormControl('',[Validators.required,Validators.email]),
-     })
+      comment: new FormControl('', [Validators.required, Validators.email]),
+    })
     this.archiveCommentForm = new FormGroup({
-      archiveComment: new FormControl('',[Validators.required,Validators.email]),
-     })
+      archiveComment: new FormControl('', [Validators.required, Validators.email]),
+    })
   }
 
   editCell(rowData: any, field: string) {
@@ -195,7 +195,7 @@ export class LeadsComponent {
   openModal(element: any, className: string, size: string, data: any[]) {
     this._ModalService.open(element, { windowClass: className, size: size });
   }
-  closeModal(){
+  closeModal() {
     this._ModalService.dismissAll();
   }
 
@@ -211,13 +211,20 @@ export class LeadsComponent {
   openModalArchive(leadsName: any) {
 
   }
-  onCommentSubmit(commentForm:FormGroup){
+  onCommentSubmit(commentForm: FormGroup) {
     this.commentObj = commentForm.value;
   }
-  onArchiveCommentSubmit(archiveComment:FormGroup){
+  onArchiveCommentSubmit(archiveComment: FormGroup) {
     this.archiveCommentObj = archiveComment.value;
   }
-
+  showGridView() {
+    this.displayListView = false;
+    this.displayGridView = true;
+  }
+  showListView() {
+    this.displayListView = true;
+    this.displayGridView = false;
+  }
 }
 
 

@@ -12,6 +12,8 @@ export class MainActionsComponent implements OnInit {
   
   @Input() addTitle : any;
   @Output() childEmitter: EventEmitter<any> = new EventEmitter()
+  @Output() gridViewEmitter: EventEmitter<any> = new EventEmitter()
+  @Output() listEmitter: EventEmitter<any> = new EventEmitter()
   
 
   ngOnInit(): void {
@@ -19,6 +21,12 @@ export class MainActionsComponent implements OnInit {
   getChildData(){
     this.childEmitter.emit(this.className)
 
+  }
+  gridView(){
+    this.gridViewEmitter.emit(this.className)
+  }
+  listView(){
+    this.listEmitter.emit(this.className)
   }
 
 }

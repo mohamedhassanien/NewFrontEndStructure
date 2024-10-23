@@ -1,1 +1,427 @@
-<p>prospect works!</p>
+<div class="leads">
+    <h3>Prospect Management</h3>
+    <div class="d-flex justify-content-between align-items-center">
+        <app-main-filter></app-main-filter>
+        <app-main-actions [addTitle]="btn_title" (childEmitter)="openModal(addLead,'main-modal','lg',[])"
+            (gridViewEmitter)="showGridView()" (listEmitter)="showListView()" [class.activeGrid]="displayGridView"
+            [class.activeList]="displayListView"></app-main-actions>
+        <ng-template #addLead let-d="dismiss">
+            <app-add-lead></app-add-lead>
+        </ng-template>
+    </div>
+    <div>
+        <div class="component_table card" *ngIf="displayListView">
+            <p-table [value]="prospect" [scrollable]="true" [paginator]="true" [rows]="9"
+                [rowsPerPageOptions]="[5, 10, 20]"
+                [globalFilterFields]="['name', 'prospect.name', 'prospect.phone_number', 'phone_number']" #dt2>
+                <ng-template pTemplate="caption">
+                    <p-iconField iconPosition="left" class="ml-auto">
+                        <p-inputIcon style="position: relative;top: -3px; left: 4px;">
+                            <i class="fas fa-search"></i>
+                        </p-inputIcon>
+                        <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search in Prospect" style="border-radius: 70px; height: 45px;" />
+                    </p-iconField>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+                        <th style="width: 10rem">ID</th>
+                        <th pSortableColumn="name" style="min-width: 200px">Name <p-sortIcon field="name" /></th>
+                        <th pSortableColumn="score" style="min-width: 100px">Score <p-sortIcon field="score" /></th>
+
+                        <th pSortableColumn="accountCreation" style="min-width: 200px">Account creation <p-sortIcon
+                                field="accountCreation" />
+                        </th>
+
+
+                        <th pSortableColumn="status" style="min-width: 200px">Status <p-sortIcon field="status" /></th>
+                        <th pSortableColumn="phone_number" style="min-width: 200px">Phone number <p-sortIcon
+                                field="phone_number" /></th>
+                        <th pSortableColumn="soi" style="min-width: 300px">School Of Interest <p-sortIcon field="soi" />
+                        </th>
+                        <th pSortableColumn="poi" style="min-width: 300px">Program Of Interest<p-sortIcon field="poi" />
+                        </th>
+                        <th pSortableColumn="intakeM" style="min-width: 150px">Intake Month<p-sortIcon
+                                field="intakeM" /></th>
+                        <th pSortableColumn="intakeY" style="min-width: 150px">Intake Year<p-sortIcon field="intakeY" />
+                        </th>
+                        <th pSortableColumn="nationality" style="min-width: 150px">Nationality <p-sortIcon
+                                field="nationality" /></th>
+                        <th pSortableColumn="email_address" style="min-width: 300px">Email Address <p-sortIcon
+                                field="email_address" /></th>
+                        <th pSortableColumn="representative" style="min-width: 200px">Representative <p-sortIcon
+                                field="representative" /></th>
+                        <th pSortableColumn="source" style="min-width: 300px">Source <p-sortIcon field="source" /></th>
+                        <th pSortableColumn="previousSchool" style="min-width: 300px">Previous School <p-sortIcon
+                                field="previousSchool" /></th>
+
+                        <th style="width: 8rem;"></th>
+
+
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-prospect let-editing="editing" let-rowIndex="rowIndex">
+                    <tr>
+                        <td style="width: 4rem">
+                            <p-tableCheckbox [value]="prospect" />
+                        </td>
+                        <td>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="prospect.id" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ prospect.id }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="prospect.name" pEditableColumnField="name">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="prospect.name" required />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ prospect.name }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="prospect.score" pEditableColumnField="score">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="scores" appendTo="body" [(ngModel)]="prospect.score"
+                                        [style]="{ width: '100%' }"></p-dropdown>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="d-flex justify-content-center">
+                                        <p-badge [styleClass]="getScoreColor(prospect.score)"
+                                            [value]="prospect.score"></p-badge>
+                                    </div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+
+                        <td pEditableColumn [pEditableColumnField]="'accountCreation'"
+                            [pEditableColumnRowIndex]="rowIndex">
+                            <div class="progress-container position-relative">
+                                <span class="reminder_bar" *ngIf="prospect.accountCreation != undefined">
+                                    {{ prospect.accountCreation > 25 ? "25+ days" : prospect.accountCreation === 1 ?
+                                    prospect.accountCreation + "
+                                    day": prospect.accountCreation + " days"
+                                    }}</span>
+                                <p-progressBar [ngClass]="getProgressColor(prospect.accountCreation)"
+                                    [value]="setProgressValue(prospect.accountCreation)"
+                                    [showValue]="false"></p-progressBar>
+                            </div>
+                        </td>
+
+                        <td>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="prospect.status" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="status_styles"
+                                        [class.invited_lead]="prospect.status == 'Invited prospect'"
+                                        [class.invited_lead]="prospect.status == 'Invited lead'"
+                                        [class.docs_uploaded]="prospect.status == 'Docs uploaded'"
+                                        [class.account_created]="prospect.status == 'Account Created'">
+                                        {{ prospect.status }}
+                                    </div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="prospect.phone_number" pEditableColumnField="phone_number">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="prospect.phone_number" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ prospect.phone_number }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="prospect.soi" pEditableColumnField="soi">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-multiSelect [options]="soi" display="chip" placeholder="Select sources"
+                                        [(ngModel)]="prospect.soi" [style]="{ width: '100%' }"
+                                        appendTo="body"></p-multiSelect>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="selected_select">{{ prospect.soi }}</div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="prospect.poi" pEditableColumnField="poi">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-multiSelect [options]="poi" display="chip" placeholder="Select sources"
+                                        [(ngModel)]="prospect.poi" [style]="{ width: '100%' }"
+                                        appendTo="body"></p-multiSelect>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="selected_select">{{ prospect.poi }}</div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td [pEditableColumn]="prospect.intakeM" pEditableColumnField="intakeM">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="intakeM" appendTo="body" [(ngModel)]="prospect.intakeM"
+                                        [style]="{ width: '100%' }"></p-dropdown>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{prospect.intakeM}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="prospect.intakeY" pEditableColumnField="intakeY">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="intakeY" appendTo="body" [(ngModel)]="prospect.intakeY"
+                                        [style]="{ width: '100%' }"></p-dropdown>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{prospect.intakeY}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="prospect.nationality" pEditableColumnField="nationality">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="prospect.nationality" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ prospect.nationality }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="prospect.email_address" pEditableColumnField="email_address">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="prospect.email_address" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ prospect.email_address }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td [pEditableColumn]="prospect.representative" pEditableColumnField="representative">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="prospect.representative" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ prospect.representative }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td [pEditableColumn]="prospect.source" pEditableColumnField="source">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-multiSelect [options]="sources" display="chip" placeholder="Select sources"
+                                        [(ngModel)]="prospect.source" [style]="{ width: '100%' }"
+                                        appendTo="body"></p-multiSelect>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    <div class="selected_select">{{ prospect.source }}</div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td [pEditableColumn]="prospect.previousSchool" pEditableColumnField="previousSchool">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-dropdown [options]="previousSchool" appendTo="body"
+                                        [(ngModel)]="prospect.previousSchool" [style]="{ width: '100%' }"></p-dropdown>
+
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ prospect.previousSchool }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td>
+                            <button mat-button [matMenuTriggerFor]="menu" icon="pi pi-ellipsis-v">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="openModal(student_View, 'main-modal', 'lg', [])">
+                                    <i class="far fa-eye"></i>
+                                    <span>View</span>
+                                </button>
+                                <ng-template #studentView let-d="dismiss">
+                                    <div class="container py-5 px-4">
+
+                                        <mat-tab-group>
+                                            <mat-tab label="Main information" class="mainInfoTab">
+                                                <h3 class="mt-3">Information</h3>
+                                                <form class="px-2">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="fname" class="position-absolute px-2">First
+                                                                    Name</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="lname" class="position-absolute px-2">Last
+                                                                    Name</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Nationality</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Country of
+                                                                    Residence</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Email</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Phone Number</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div
+                                                                class="input-caption position-relative mt-4 p-3 rounded-5">
+                                                                <label for="nationality"
+                                                                    class="position-absolute px-2">Maximum
+                                                                    Budget</label>
+                                                                <input type="text" class="border-0 w-100 bg-white ps-2">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </mat-tab>
+                                            <mat-tab label="New tag">newTag </mat-tab>
+                                            <mat-tab label="Score">score</mat-tab>
+                                            <mat-tab label="Language test">langTest</mat-tab>
+
+                                        </mat-tab-group>
+                                    </div>
+                                </ng-template>
+
+                                <button mat-menu-item [matMenuTriggerFor]="assign">
+                                    <i class="fas fa-share-square"></i>
+                                    <span>Assign</span>
+                                </button>
+                                <mat-menu #assign="matMenu">
+                                    <button mat-menu-item (click)="sendToMe(prospect.username)">
+                                        For Me
+                                    </button>
+                                    <button mat-menu-item [matMenuTriggerFor]="others">
+                                        For Others
+                                    </button>
+
+                                    <mat-menu #others="matMenu">
+                                        <button mat-menu-item *ngFor="let emp of employees"
+                                            (click)="assignToEmployee(prospect.username, emp.username)">
+                                            {{ emp.name }}
+                                        </button>
+                                    </mat-menu>
+                                </mat-menu>
+
+                                <button mat-menu-item (click)="
+                                  openModal(comments, 'main-modal', 'lg', prospect.email)
+                                ">
+                                    <i class="far fa-comment-dots"></i>
+                                    <span>Comments</span>
+                                </button>
+                                <ng-template #comments let-d="dismiss">
+                                    <form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit(commentForm)"
+                                        class="comment_form">
+                                        <h4>Comments of <span> {{prospect.name}} </span></h4>
+                                        <textarea formControlName="comment" placeholder="Your Comment"></textarea>
+                                        <p class="validation_msg"
+                                            *ngIf="commentForm.get('comment')?.hasError('required') && commentForm.get('comment')?.touched">
+                                            Comment is required.</p>
+                                        <h5>Emp Name <span>10:40</span></h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button>Send</button>
+                                        </div>
+                                    </form>
+                                </ng-template>
+                                <button mat-menu-item (click)="sendToProspect(prospect.username)">
+                                    <i class="fas fa-redo-alt"></i>
+                                    <span>Send to Prospect</span>
+                                </button>
+
+                                <button mat-menu-item
+                                    (click)="openModal(archiveView, 'main-modal', 'lg',  prospect.email)">
+                                    <i class="far fa-trash-alt"></i>
+                                    <span>Archive</span>
+                                </button>
+                                <ng-template #archiveView let-d="dismiss">
+                                    <form [formGroup]="archiveCommentForm"
+                                        (ngSubmit)="onArchiveCommentSubmit(archiveCommentForm)" class="comment_form">
+                                        <h4>Archive Comment</h4>
+                                        <textarea formControlName="archiveComment"
+                                            placeholder="Your Archive Comment"></textarea>
+                                        <p class="validation_msg"
+                                            *ngIf="archiveCommentForm.get('archiveComment')?.hasError('required') && archiveCommentForm.get('archiveComment')?.touched">
+                                            Archive Comment is required.</p>
+                                        <h5>Emp Name <span>10:40</span></h5>
+                                        <div class="d-flex justify-content-end">
+                                            <button>Send</button>
+                                        </div>
+                                    </form>
+                                </ng-template>
+
+                                <button mat-menu-item (click)="openModal(student_View, 'main-modal', 'lg', [])">
+                                    <i class="far fa-eye"></i>
+                                    <span>View</span>
+                                </button>
+                                <ng-template #student_View let-d="dismiss">
+                                    <app-student-data></app-student-data>
+                                </ng-template>
+
+                            </mat-menu>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <div class="grid_view" *ngIf="displayGridView">
+
+            <app-leads-grid [AccountData]="accountCreatedList" [Invitedata]="inviteData"
+                [sentToProspect]="[]"></app-leads-grid>
+        </div>
+    </div>
+</div>
