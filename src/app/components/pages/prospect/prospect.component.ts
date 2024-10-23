@@ -27,7 +27,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { StudentDataComponent } from "../../layout/student-data/student-data.component";
 import { AddLeadComponent } from "../add-lead/add-lead.component";
-import { LeadsGridComponent } from "../../layout/leads-grid/leads-grid.component";
+import { LeadsGridComponent } from "../leads-grid/leads-grid.component";
 
 @Component({
   selector: 'app-prospect',
@@ -49,8 +49,8 @@ import { LeadsGridComponent } from "../../layout/leads-grid/leads-grid.component
     MultiSelectModule,
     StudentDataComponent,
     InputTextModule,
-    MatTabsModule, 
-    AddLeadComponent, 
+    MatTabsModule,
+    AddLeadComponent,
     LeadsGridComponent],
   templateUrl: './prospect.component.html',
   styleUrl: './prospect.component.scss',
@@ -61,8 +61,8 @@ export class ProspectComponent {
   btn_title = 'Add Lead'
   prospect!: Prospect[];
   scores: number[] = [1, 2, 3, 4, 5];
-  intakeM: string[] = ['January','September'];
-  intakeY: string[] = ['2023','2024','2025', '2026'];
+  intakeM: string[] = ['January', 'September'];
+  intakeY: string[] = ['2023', '2024', '2025', '2026'];
   previousSchool: string[] = ['AD EDUCATION', 'AIVANCITY', 'Brest Business School', 'CESI'];
   commentForm!: FormGroup;
   archiveCommentForm!: FormGroup;
@@ -72,8 +72,8 @@ export class ProspectComponent {
 
   displayListView = true;
   displayGridView = false;
-  inviteData:any;
-  accountCreatedList:any;
+  inviteData: any;
+  accountCreatedList: any;
 
   employees: any[] = [{
     name: "Ali",
@@ -150,10 +150,10 @@ export class ProspectComponent {
     this.prospectService.getProductsMini().then((data: any) => {
 
       this.prospect = data;
-      const invitedData = data.filter((val:any) => val.status === "Invited lead");
+      const invitedData = data.filter((val: any) => val.status === "Invited lead");
       this.inviteData = invitedData;
 
-      const accountData = data.filter((val:any) => val.status === "Account Created");
+      const accountData = data.filter((val: any) => val.status === "Account Created");
       this.accountCreatedList = accountData;
     });
     this.commentForm = new FormGroup({

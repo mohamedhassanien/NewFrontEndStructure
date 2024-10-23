@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between">
     <div class="d-flex align-items-center">
         <img src="./assets/images/noimg.png" alt="lead image" class="lead_img">
-        <span class="lead_name">Somaya Ahmed</span>
+        <span class="lead_name">{{leadName}}</span>
         <span class="aploaded_documents">Aploaded Documents</span>
     </div>
     <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
@@ -11,34 +11,49 @@
     <div>
         <div>
             <i class="fas fa-envelope"></i>
-            <span>Somaya.gmail.com</span>
+            <span>{{studentEmail}}</span>
         </div>
         <div>
             <i class="fas fa-phone-alt"></i>
-            <span>+33443434343434</span>
-            <a href="#"><img src="./assets/images/whatsapp.png"></a>
+            <span>{{PhoneNumber}}</span>
+            <a href="#"><img src="./assets/images/whatsapp.png" class="whatsapp"></a>
         </div>
         <div>
             <i class="fas fa-map-marker-alt"></i>
-            <span>Morocco</span>
+            <span>{{nationality}}</span>
         </div>
     </div>
     <div>
         <div class="representative_data">
-            <img src="./assets/images/representative.png">
-            <span>Oumaima Elhaddadi</span>
+            <img src="./assets/images/representative.png" alt="representative">
+            <span>{{representative}}</span>
             <span>The Representative</span>
         </div>
     </div>
 </div>
 
 <div class="stuent_choies">
-    <span class="choies_title">Source</span><span class="choies_data">Facebook</span>
-    <span class="choies_title">Previous school</span><span class="choies_data">Skema business school</span>
-    <span class="choies_title">School of interest</span><span class="choies_data">Skema business school</span>
-    <span class="choies_title">Field of interest</span><span class="choies_data">Master of business</span>
-    <span class="choies_title">Intake</span><span class="choies_data">September</span><br>
-    <span class="choies_title">Year</span><span class="choies_data">2024</span>
+    <span class="choies_title">Source</span>
+    <span class="choies_data">
+        @for (item of source; track item) {
+            {{item}},
+          }
+    </span>
+
+    <span class="choies_title">Previous school</span>
+    <span class="choies_data">{{previousSchool}}</span>
+
+    <span class="choies_title">School of interest</span>
+    <span class="choies_data">{{soi}}</span>
+
+    <span class="choies_title">Field of interest</span>
+    <span class="choies_data">{{foi}}</span>
+
+    <span class="choies_title">Intake</span>
+    <span class="choies_data">{{intakeM}}</span>
+
+    <span class="choies_title">Year</span>
+    <span class="choies_data">{{intakeY}}</span>
 </div>
 
 <div class="representative_comment">
@@ -48,7 +63,7 @@
 <div class="d-flex align-items-center">
     <img src="./assets/images/noimg.png" alt="lead image" class="lead_img">
     <div>
-        <span class="representative_created d-block">Oumaima</span>
+        <span class="representative_created d-block">{{representative}}</span>
         <span class="created_time d-block">10:49 AM</span>
     </div>
 </div>

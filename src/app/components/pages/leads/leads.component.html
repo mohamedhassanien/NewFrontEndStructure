@@ -158,7 +158,19 @@
                                     <span>View</span>
                                 </button>
                                 <ng-template #student_View let-d="dismiss">
-                                    <app-student-data></app-student-data>
+                                    <app-student-data   [leadName]="leads.name" 
+                                                        [studentEmail]="leads.email_address" 
+                                                        [PhoneNumber]="leads.phone_number" 
+                                                        [nationality]="leads.nationality" 
+                                                        [representative]="leads.representative"
+                                                        [source]="leads.source"
+                                                        [previousSchool]="leads.previousSchool"
+                                                        [soi]="leads.soi"
+                                                        [foi]="leads.foi"
+                                                        [intakeM]="leads.intakeM"
+                                                        [intakeY]="leads.intakeY"
+                                                        >
+                                        </app-student-data>
                                 </ng-template>
                                 <button mat-menu-item [matMenuTriggerFor]="assign">
                                     <i class="fas fa-share-square"></i>

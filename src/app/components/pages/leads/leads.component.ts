@@ -27,7 +27,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { StudentDataComponent } from "../../layout/student-data/student-data.component";
 import { AddLeadComponent } from "../add-lead/add-lead.component";
-import { LeadsGridComponent } from "../../layout/leads-grid/leads-grid.component";
+import { LeadsGridComponent } from "../leads-grid/leads-grid.component";
 
 @Component({
   selector: 'app-leads',
@@ -49,8 +49,8 @@ import { LeadsGridComponent } from "../../layout/leads-grid/leads-grid.component
     MultiSelectModule,
     StudentDataComponent,
     InputTextModule,
-    MatTabsModule, 
-    AddLeadComponent, 
+    MatTabsModule,
+    AddLeadComponent,
     LeadsGridComponent],
   templateUrl: './leads.component.html',
   styleUrl: './leads.component.scss',
@@ -69,8 +69,8 @@ export class LeadsComponent {
 
   displayListView = true;
   displayGridView = false;
-  inviteData:any;
-  accountCreatedList:any;
+  inviteData: any;
+  accountCreatedList: any;
 
   employees: any[] = [{
     name: "Ali",
@@ -138,10 +138,10 @@ export class LeadsComponent {
     this.leadsService.getProductsMini().then((data: any) => {
 
       this.leads = data;
-      const invitedData = data.filter((val:any) => val.status === "Invited lead");
+      const invitedData = data.filter((val: any) => val.status === "Invited lead");
       this.inviteData = invitedData;
 
-      const accountData = data.filter((val:any) => val.status === "Account Created");
+      const accountData = data.filter((val: any) => val.status === "Account Created");
       this.accountCreatedList = accountData;
     });
     this.commentForm = new FormGroup({

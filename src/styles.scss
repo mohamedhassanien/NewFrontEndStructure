@@ -165,5 +165,12 @@ html {
     top: -16px;
     right: -10px;
 }
+table{
+    .mat-mdc-button:not(:disabled){
+        color: $gray!important;
+        top: 0px;
+        right: 0px;
+    }
+}
 @include mat.core();
 @include mat.color-variants-backwards-compatibility($theme);
