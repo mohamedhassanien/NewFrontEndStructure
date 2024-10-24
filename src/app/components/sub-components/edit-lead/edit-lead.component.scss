@@ -1,0 +1,108 @@
+@import '../../../../default.scss';
+
+
+.modal-con{
+  min-height: 670px;
+  h3{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    
+  }
+  .btn-close{
+    top: 20px;
+    right: 12px;
+  }
+  .radio-toolbar {
+    background-color: #7F6ECC;
+    color: white;
+    padding: 0;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    input[type="radio"] {
+      display: none;
+    }
+    input[type="radio"]:checked+label {
+      background-color: #EAD799;
+      font-weight: bold;
+      color: black;
+      width: 50%;
+      border-radius: 25px; 
+      text-align: center;
+    }
+
+    label {
+      display: inline-block;
+      font-family: Arial;
+      font-size: 16px;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px 13px;
+      border-radius: 10px;
+      width: 50%;
+    }
+  }
+ 
+
+    mat-tab-group{
+      mat-tab{
+        border-bottom: 2px solid $State-Color-1 !important;
+      }
+      
+    }
+  
+    .doneBtn{
+     background-color: $State-Color-1;
+     color: white;
+     box-shadow: 0px 3px 10px 0px #9431BD4D;
+    }
+   }
+   
+    form{
+      overflow-x: hidden !important;
+      .input-caption{
+        border: 1px solid $border-color;
+        box-shadow: $border-shadow;
+        width:100% !important;
+        input{
+            box-sizing: border-box;
+        }
+        input::placeholder{
+            color: #9A9A9A;
+        }
+        input:focus{
+            outline: none;
+        }
+        input:hover{
+            background-color: white;
+        }
+        //to change autofill background color for input
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            transition: background-color 5000000s ease-in-out 0s !important;
+        }
+  
+        label{
+            top:-15px;
+            left: 30px;
+            color: $State-Color-1;
+            background-color: white;
+            font-weight:600;   
+        }
+        select{
+          color: #898989;
+        }
+        select:focus{
+           outline:none;
+
+        }
+      }
+     
+    }
+
+  
