@@ -1,4 +1,5 @@
-<div class="container modal-con py-4 px-3">
+<div class="container modal-con py-4 px-3 position-relative">
+    <button type="button" class="btn-close position-absolute" aria-label="Close" (click)="closeModal()"></button>
   <div class="d-flex justify-content-center mb-4">
     <div class="radio-toolbar text-center">
         <input type="radio" id="radio1" name="leadType" value="0" [(ngModel)]="selectedLeadType"/>
@@ -242,11 +243,68 @@
                       </select>
                 </div>
                 
-                <div *ngIf="selectedOption === 'English'" class="mb-4 mt-3 graduated">
+                <div *ngIf="selectedOption === 'English'" class="mb-4 mt-3 graduated mx-2">
                     <h4 class="mb-3">Do you have an English language proficiency test?</h4>
                     <div class="d-flex justify-content-between mb-3">
-                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
-                            <input id="yes" type="checkbox" class="me-2" name="proficiency-test">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" [class.checked-btn]="selectedCheckboxBtn === 1" (click)="onCheckboxBtnClick(1)">
+                            <input id="yes" type="checkbox" class="me-2" [checked]="selectedCheckboxBtn === 1" (click)="onCheckboxClick($event,1)" name="proficiency-test">
+                            <label for="yes">Yes,I have.</label>
+                        </button>
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" [class.checked-btn]="selectedCheckboxBtn === 2" (click)="onCheckboxBtnClick(2)">
+                            <input id="maybe" type="checkbox" class="me-2" [checked]="selectedCheckboxBtn === 2" (click)="onCheckboxClick($event,2)" name="proficiency-test">
+                            <label for="maybe">I am planning to take one.</label>
+                        </button>
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" [class.checked-btn]="selectedCheckboxBtn === 3" (click)="onCheckboxBtnClick(3)">
+                            <input id="no" type="checkbox" class="me-2" [checked]="selectedCheckboxBtn === 3" (click)="onCheckboxClick($event,3)" name="proficiency-test">
+                            <label for="no">I do not have a test.</label>
+                        </button> 
+                    </div>
+                       <div class="testYes" *ngIf="selectedCheckboxBtn === 1">
+                        <h4 class="mb-3">Which test did you take?</h4>
+                        <div class="d-flex justify-content-between mb-4">
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('ILETS')" [class.checked-btn]="selectedTest === 'ILETS'">
+                                <input id="ILETS" type="checkbox" [checked]="selectedTest === 'ILETS'" (click)="onTestClick($event,'ILETS')" class="me-2" name="english-test">
+                                <label for="ILETS">ILETS</label>
+                            </button>
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('TOEFL')" [class.checked-btn]="selectedTest === 'TOEFL'">
+                                <input id="TOEFL" type="checkbox"  [checked]="selectedTest === 'TOEFL'" (click)="onTestClick($event,'TOEFL')" class="me-2" name="english-test">
+                                <label for="TOEFL">TOEFL</label>
+                            </button>
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('Duolingo')" [class.checked-btn]="selectedTest === 'Duolingo'">
+                                <input id="Duolingo" type="checkbox"  [checked]="selectedTest === 'Duolingo'" (click)="onTestClick($event,'Duolingo')" class="me-2" name="english-test">
+                                <label for="Duolingo">Duolingo</label>
+                            </button>
+                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onTestBtnClick('Easy speaking')" [class.checked-btn]="selectedTest === 'Easy speaking'">
+                                <input id="easy-speaking" type="checkbox"  [checked]="selectedTest === 'Easy speaking'" (click)="onTestClick($event,'Easy speaking')" class="me-2" name="english-test">
+                                <label for="easy-speaking">Easy speaking</label>
+                            </button>
+                        </div>
+                        <div class="testScore mt-5" *ngIf="selectedTest === 'ILETS' || selectedTest === 'TOEFL' || selectedTest === 'Duolingo' || selectedTest === 'Easy speaking'">
+                            <div class="d-flex justify-content-end graduated" *ngIf="selectedTest === 'ILETS'">
+                                <p class="mb-0 test-score">What is your score(1-9)?</p>
+                            </div>
+                            <div class="d-flex justify-content-end graduated" *ngIf="selectedTest === 'TOEFL'">
+                                <p class="mb-0 test-score">What is your score(10-120)?</p>
+                            </div>
+                            <div class="d-flex justify-content-end graduated" *ngIf="selectedTest === 'Duolingo'">
+                                <p class="mb-0 test-score">What is your score(10-160)?</p>
+                            </div>
+                            <div class="d-flex justify-content-end graduated" *ngIf="selectedTest === 'Easy speaking'">
+                                <p class="mb-0 test-score">What is your score(1-100)?</p>
+                            </div>
+                            <div class="input-caption position-relative mb-1 p-3 rounded-5">
+                                <label for="en_score" class="position-absolute px-2">Score</label>
+                                <input type="number" class="border-0 w-100 bg-white ps-2" >
+                              </div>
+                        </div>
+
+                       </div>
+                </div>
+                <div *ngIf="selectedOption === 'French'" class="mb-4 mt-3 graduated mx-2">
+                    <h4 class="mb-3">Do you have a French language proficiency test?</h4>
+                    <div class="d-flex justify-content-between mb-3">
+                        <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn" (click)="onCheckboxBtnClick(2)">
+                            <input id="yes" type="checkbox" class="me-2" [checked]="selectedCheckboxBtn === 2" (click)="onCheckboxClick($event,2)" name="proficiency-test">
                             <label for="yes">Yes,I have.</label>
                         </button>
                         <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
@@ -258,25 +316,29 @@
                             <label for="no">I do not have a test.</label>
                         </button> 
                     </div>
-                    <h4 class="mb-3">Which test did you take?</h4>
-                        <div class="d-flex justify-content-between mb-4">
-                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
-                                <input id="ILETS" type="checkbox" class="me-2" name="english-test">
-                                <label for="ILETS">ILETS</label>
-                            </button>
-                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
-                                <input id="TOEFL" type="checkbox" class="me-2" name="english-test">
-                                <label for="TOEFL">TOEFL</label>
-                            </button>
-                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
-                                <input id="Duolingo" type="checkbox" class="me-2" name="english-test">
-                                <label for="Duolingo">Duolingo</label>
-                            </button>
-                            <button class="p-2 rounded-2 d-flex justify-content-between align-items-center check-btn">
-                                <input id="easy-speaking" type="checkbox" class="me-2" name="english-test">
-                                <label for="easy-speaking">Easy speaking</label>
-                            </button>
+                       <div class="testYes" *ngIf="selectedCheckboxBtn === 2">
+                        <h4 class="mb-3">Which test did you take?</h4>
+                        <div class="mb-4">
+                            <div class="input-caption position-relative my-4 p-3 mb-1 rounded-5">
+                                <label for="french_test" class="position-absolute px-2">Test</label>
+                                <select class="border-0 w-100 bg-white ps-2" for="french_test" placeholder="French test">
+                                    <option value="DELF">DELF</option>
+                                    <option value="TOEFL">DALF</option>
+                                    <option value="TCF">TCF</option>
+                                 </select>
+                            </div>
+                            <div class="input-caption position-relative mt-4 p-3 mb-1 rounded-5">
+                                <label for="score" class="position-absolute px-2">Score</label>
+                                <select class="border-0 w-100 bg-white ps-2" for="score" placeholder="Score">
+                                    <option value="B1">B1</option>
+                                    <option value="B2">B2</option>
+                                    <option value="C1">C1</option>
+                                    <option value="C1">C2</option>
+                                 </select>
+                            </div>
+                            
                         </div>
+                       </div>
                 </div>
             </form>
             <button type="button" (click)="goToNextTab()" class="d-flex justify-content-end doneBtn border-0 mb-3 px-5 py-3 rounded-5 ms-auto">Next</button>
