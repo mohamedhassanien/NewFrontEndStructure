@@ -111,9 +111,39 @@ table{
   }
 }
 
+.modal,.modal-content{
+  background-color: #F5F7FA !important;
+} 
+
 .modal-container{
+  .userName{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+  }
   .doc-type{
     background-color: #7F6ECC ;
     color: white;
+  }
+  .bg-lightgrey{
+    background-color: #F5F7FA;
+  }
+  .text-purple{
+    color: #7F6ECC;
+  }
+  .file-upload{
+    display: none;
+  }
+  .bg-red{
+   background-color: #FF5151;
+  }
+  .bg-green{
+    background-color: #45BF67;
+  }
+  .text-green{
+    color: #45BF67;
+  }
+  .text-red{
+    color: #FF5151;
   }
 }
