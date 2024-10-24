@@ -461,7 +461,7 @@
                                     <span>Suggest program</span>
                                 </button>
                                 <ng-template #suggestProgram let-d="dismiss">
-                                    Suggest program
+                                    <app-suggest-program></app-suggest-program>
                                 </ng-template>
                                 <button mat-menu-item (click)="openModal(addTask, 'main-modal', 'lg', prospect.email)">
                                     <i class="far fa-edit"></i>

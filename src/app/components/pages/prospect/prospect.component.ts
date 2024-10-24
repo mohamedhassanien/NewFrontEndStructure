@@ -28,6 +28,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StudentDataComponent } from "../../sub-components/student-data/student-data.component";
 import { AddLeadComponent } from "../add-lead/add-lead.component";
 import { ProspectGridComponent } from "../prospect-grid/prospect-grid.component";
+import { SuggestProgramComponent } from "../../sub-components/suggest-program/suggest-program.component";
 
 @Component({
   selector: 'app-prospect',
@@ -51,7 +52,7 @@ import { ProspectGridComponent } from "../prospect-grid/prospect-grid.component"
     InputTextModule,
     MatTabsModule,
     AddLeadComponent,
-    ProspectGridComponent],
+    ProspectGridComponent, SuggestProgramComponent],
   templateUrl: './prospect.component.html',
   styleUrl: './prospect.component.scss',
   providers: [ProspectService]

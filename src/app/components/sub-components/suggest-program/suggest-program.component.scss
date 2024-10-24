@@ -1,0 +1,51 @@
+@import '../../../../default.scss';
+
+.add_msg{
+    text-align: center;
+    button{
+        background-color: transparent;
+        padding: 15px 35px;
+        border: none;
+        border-radius: 30px;
+        font-size: $font-16;
+        box-shadow: $btn_shadow;
+        margin-bottom: 20px;
+
+        &.cancel{
+            background-color: $bg-color;  
+            color: $State-Color-1;
+            margin-right: 16px;
+            transition: $transition2;
+
+            &:hover{
+                background-color: $State-Color-1;
+                transition: $transition2;
+                color:$bg-color;
+            }
+        }
+        &.add_pro{
+            background-color: $State-Color-1;
+            color:$bg-color;
+            transition: $transition2;
+
+            &:hover{
+                background-color: $bg-color;
+                color: $State-Color-1;
+                transition: $transition2;
+            }
+        }
+
+        svg{
+            margin-right: 5px;
+        }
+    }
+    .add_program_img{
+        width: 245px;
+    }
+    .add_program_title{
+        margin-top: 15px;
+        margin-bottom: 30px;
+        font-size: $font-16;
+    }
+    
+}
