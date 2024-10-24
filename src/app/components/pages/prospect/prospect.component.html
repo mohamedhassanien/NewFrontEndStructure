@@ -289,7 +289,152 @@
                                     <i class="far fa-file-pdf"></i>
                                     <span>Documents</span>
                                 </button>
-                                <ng-template #StudentDocuments let-d="dismiss">Documents</ng-template>
+                                <ng-template #StudentDocuments let-d="dismiss" class="modal-bg">
+                                    <div class="container modal-container">
+                                        <div class="doc-name d-flex justify-content-between">
+                                            <div class="userName d-flex align-items-center justify-content-between mb-4">
+                                                <i class="far fa-user-circle pe-2 text-purple"></i>
+                                                <span>Hager Hesham</span>
+                                            </div>
+                                            <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+                                        </div>
+                                        <div class="doc-type py-2 ps-4 rounded-5 mb-2">IDENTITY DOCUMENTS</div>
+                                        <div class="bg-lightgrey rounded-4 mb-2 px-4 py-2 ">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-5 d-flex flex-column justify-content-between align-content-between">
+                                                    <span>Document Name</span>
+                                                    <span class="mt-3">Copy of Passport/ or ID</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Uploaded</span>
+                                                    <button class="btn bg-green text-white py-0 px-3">Yes</button>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>View file</span>
+                                                    <span class="text-green"><i class="far fa-eye"></i> View</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Upload</span>
+                                                    <span><i class="far fa-trash-can text-red"></i></span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-lightgrey rounded-4 mb-2 px-4 py-2 ">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-5 d-flex flex-column justify-content-between align-content-between">
+                                                    <span>Document Name</span>
+                                                    <span class="mt-3">Identity Photo</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Uploaded</span>
+                                                    <button class="btn bg-red text-white py-0 px-3">No</button>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>View file</span>
+                                                    <span>-</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Upload</span>
+                                                    <span><i class="fas fa-circle-plus text-purple"><input type="file" class="file-upload"></i></span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="doc-type py-2 ps-4 rounded-5 mb-2">MOTIVATION DOCUMENTS</div>
+                                        <div class="bg-lightgrey rounded-4 mb-2 px-4 py-2 ">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-5 d-flex flex-column justify-content-between align-content-between">
+                                                    <span>Document Name</span>
+                                                    <span class="mt-3">Resume</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Uploaded</span>
+                                                    <button class="btn bg-red text-white py-0 px-3">No</button>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>View file</span>
+                                                    <span>-</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Upload</span>
+                                                    <span><i class="fas fa-circle-plus text-purple"><input type="file" class="file-upload"></i></span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="bg-lightgrey rounded-4 mb-2 px-4 py-2 ">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-5 d-flex flex-column justify-content-between align-content-between">
+                                                    <span>Document Name</span>
+                                                    <span class="mt-3">Motivation Letter (Cover Letter) </span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Uploaded</span>
+                                                    <button class="btn bg-red text-white py-0 px-3">No</button>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>View file</span>
+                                                    <span>-</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Upload</span>
+                                                    <span><i class="fas fa-circle-plus text-purple"><input type="file" class="file-upload"></i></span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="doc-type py-2 ps-4 rounded-5 mb-2">ACADEMIC DOCUMENTS</div>
+                                        <div class="bg-lightgrey rounded-4 mb-2 px-4 py-2 ">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-5 d-flex flex-column justify-content-between align-content-between">
+                                                    <span>Document Name</span>
+                                                    <span class="mt-3">Copy of Passport/ or ID</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Uploaded</span>
+                                                    <button class="btn bg-red text-white py-0 px-3">No</button>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>View file</span>
+                                                    <span>-</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Upload</span>
+                                                    <span><i class="fas fa-circle-plus text-purple"><input type="file" class="file-upload"></i></span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="bg-lightgrey rounded-4 mb-5 px-4 py-2 ">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-5 d-flex flex-column justify-content-between align-content-between">
+                                                    <span>Document Name</span>
+                                                    <span class="mt-3">Copy of Passport/ or ID</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Uploaded</span>
+                                                    <button class="btn bg-red text-white py-0 px-3">No</button>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>View file</span>
+                                                    <span>-</span>
+                                                </div>
+                                                <div class="col-2 d-flex flex-column align-items-center justify-content-between align-content-between">
+                                                    <span>Upload</span>
+                                                    <span><i class="fas fa-circle-plus text-purple"><input type="file" class="file-upload"></i></span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </ng-template>
 
                                 <button mat-menu-item (click)="openModal(comments, 'main-modal', 'lg', prospect.email)">
                                     <i class="far fa-comment-dots"></i>

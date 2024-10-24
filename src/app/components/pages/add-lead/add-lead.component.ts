@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CheckboxModule } from 'primeng/checkbox';
 import {MatDividerModule} from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 interface SelectItem {
@@ -36,12 +37,16 @@ export class AddLeadComponent implements OnInit {
 selectedTabIndex = 0;
 selectedLeadType:string = '0';
 selectedOption:string = '';
-
+constructor(private _ModalService: NgbModal){
+  
+}
 ngOnInit(): void {
 
 }
 
 //------------------------------------------------Score Variables----------------------------------------------------------------
+
+//------------------------ current-status radio buttons --------------------------------------------------------
 selectedButton: number | null = null;
 
   // Handles button click and selects the corresponding button
@@ -53,6 +58,24 @@ selectedButton: number | null = null;
   onRadioClick(event: Event, buttonNumber: number) {
     event.stopPropagation(); // Prevent default radio button behavior
     this.onButtonClick(buttonNumber); // Trigger the same logic as the button click
+  }
+  //-------------------------------- checkboxes functionalities -------------------------------------------------
+  selectedCheckboxBtn:number|null=null;
+  onCheckboxBtnClick(buttonNumber:number){
+    this.selectedCheckboxBtn = buttonNumber;
+  }
+  onCheckboxClick(event:Event,buttonNumber:number){
+    event.stopPropagation();
+    this.onCheckboxBtnClick(buttonNumber)
+  }
+  //----------------------------------- test checkboxes functionalities -----------------------------------------
+  selectedTest :string = '';
+  onTestBtnClick(testName:string){
+    this.selectedTest = testName;
+  }
+  onTestClick(event:Event,testName:string){
+    event.stopPropagation();
+    this.onTestBtnClick(testName);
   }
 
 //-------------------------------------------------------- New tag tab lists --------------------------------------------------
@@ -116,6 +139,9 @@ options = [
    onOptionChange(event:Event){
       const  selectedElement = event.target as HTMLSelectElement;
       this.selectedOption = selectedElement.value
+   }
+   closeModal(){
+    this._ModalService.dismissAll()
    }
  
 }
