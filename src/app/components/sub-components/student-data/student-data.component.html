@@ -69,8 +69,11 @@
 </div>
 
 <div class="d-flex justify-content-end">
-    <button class="edit_btn">
+    <button class="edit_btn" (click)="openModal(Edit_lead, 'main-modal', 'lg', [])">
         <i class="fas fa-pencil-alt"></i>
         <span>Edit</span>
     </button>
+    <ng-template #Edit_lead let-d="dismiss">
+        <app-edit-lead></app-edit-lead>
+    </ng-template>
 </div>

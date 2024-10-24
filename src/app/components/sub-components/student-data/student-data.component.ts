@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { EditLeadComponent } from '../edit-lead/edit-lead.component';
 @Component({
   selector: 'app-student-data',
   standalone: true,
-  imports: [],
+  imports: [
+    EditLeadComponent
+  ],
   templateUrl: './student-data.component.html',
   styleUrl: './student-data.component.scss'
 })
@@ -24,6 +26,9 @@ export class StudentDataComponent {
 
   constructor(private _ModalService: NgbModal) {
 
+  }
+  openModal(element: any, className: string, size: string, data: any[]) {
+    this._ModalService.open(element, { windowClass: className, size: size });
   }
 
   closeModal(){
