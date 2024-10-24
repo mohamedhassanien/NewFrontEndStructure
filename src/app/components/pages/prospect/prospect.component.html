@@ -289,7 +289,32 @@
                                     <i class="far fa-file-pdf"></i>
                                     <span>Documents</span>
                                 </button>
-                                <ng-template #StudentDocuments let-d="dismiss">Documents</ng-template>
+                                <ng-template #StudentDocuments let-d="dismiss" class="modal-bg">
+                                    <div class="container modal-container">
+                                        <div class="doc-name d-flex justify-content-between">
+                                            <div class="userName d-flex align-items-center justify-content-between mb-4">
+                                                <i class="far fa-user-circle fa-2x pe-2"></i>
+                                                <span>Hager Hesham</span>
+                                            </div>
+                                            <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+                                        </div>
+                                        <div class="doc-type py-2 ps-4 rounded-5 mb-2">IDENTITY DOCUMENTS</div>
+                                        <div class="d-flex bg-white flex-column px-4 py-2">
+                                            <div class="d-flex justify-content-between">
+                                                <span>Document Name</span>
+                                                <span>Uploaded</span>
+                                                <span>View file</span>
+                                                <span>Upload</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <span>Document Name</span>
+                                                <span>Uploaded</span>
+                                                <span>View file</span>
+                                                <span>Upload</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
 
                                 <button mat-menu-item (click)="openModal(comments, 'main-modal', 'lg', prospect.email)">
                                     <i class="far fa-comment-dots"></i>
